@@ -26,7 +26,7 @@ devise_for :admin,skip: [:passwords, :registrations], controllers: {
     resources :orders, only: [:new, :index, :create, :show]
     post "orders/confirm" => "orders#confirm"
     get "orders/complete" => "orders#complete"
-    resources :addresses, only: [:index, :edit, :create, :update, :destroi]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
     get "customers/mypage" => "customers#show"
     get "customers/information/edit" => "customers#edit"
