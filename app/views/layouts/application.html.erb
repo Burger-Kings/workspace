@@ -7,11 +7,89 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark py-4">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <h1 class='text-white pt-1'>LOGO</h1>
+          </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+
+          <% if admin_signed_in? %>
+            <li class='nav-item'>
+              <%= link_to '商品一覧', root_path, class: 'btn btn-dark' %>
+            </li>
+            <li class='nav-item'>
+              <%= link_to '会員一覧', root_path, class: 'btn btn-dark' %>
+            </li>
+            <li class='nav-item'>
+              <%= link_to '注文履歴一覧', root_path, class: 'btn btn-dark' %>
+            </li>
+            <li class='nav-item'>
+              <%= link_to 'ジャンル一覧', root_path, class: 'btn btn-dark' %>
+            </li>
+            <li class='nav-item'>
+              <%= link_to 'ログアウト', root_path, class: 'btn btn-dark' %>
+            </li>
+            <form class="form-inline">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+
+          <% elsif customer_signed_in? %>
+            <li class="nav-item">
+              <%= link_to 'マイページ', root_path, class: 'btn btn-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '商品一覧', root_path, class: "btn btn-dark" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'カート', root_path, class: "btn btn-dark" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ログアウト', root_path, method: :delete, class: "btn btn-dark mr-3" %>
+            </li>
+            <form class="form-inline">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'About', root_path, class: "btn btn-dark" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '商品一覧', root_path, class: "btn btn-dark" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '新規登録', root_path, class: "btn btn-dark" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ログイン', root_path, class: "btn btn-dark" %>
+            </li>
+            <form class="form-inline">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          <% end %>
+          </div>
+        </div>
+      </nav>
+    </header>
+
     <%= yield %>
+    <footer style="height: 150px;">
+      <h1 class='text-center'>Footer</h1>
+    </footer>
   </body>
 </html>

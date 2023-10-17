@@ -1,0 +1,32 @@
+@use '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap');
+
+
+body {
+  font-family: 'Sora', sans-serif;
+}
+
+.btn-dark {
+  color: #fff;
+}
+
+.small {
+  color: #21252f;
+}
+
+.custom_table.table-bordered tbody tr td {
+  border: none;
+}
+
+  @media (max-width: 767px) {
+    .thanks h1 {
+      font-size: 24px; /* スマートフォン用のフォントサイズ */
+    }
+  }
+
+  @media (max-width: 767px) {
+    .text-large {
+      font-size: 10px;
+    }
+  }
+
