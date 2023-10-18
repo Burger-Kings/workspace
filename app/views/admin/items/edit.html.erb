@@ -1,8 +1,8 @@
 <div class="container px-5 px-sm-0">
-  <h2>商品新規登録</h2>
+  <h2>商品編集</h2>
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <%= form_with model: @item do |f| %>
+      <%= form_with model: @item, url: admin_item_path(@item.id) do |f| %>
         <table class="table table-borderless table-sm">
           <tbody>
             <tr>
@@ -14,26 +14,26 @@
               <td><%= f.text_field :name, :placeholder => "商品名", class: "form-control" %></td>
             </tr>
             <tr>
-              <th><%= f.label :introduction, :placeholder => "ここに説明文を記述します", "商品説明" %></th>
-              <td><%= f.text_area :introduction, class: "form-control", rows: 7 %></td>
+              <th><%= f.label :introduction, "商品説明" %></th>
+              <td><%= f.text_area :introduction, :placeholder => "ここに説明文を記述します", class: "form-control", rows: 7 %></td>
             </tr>
             <tr>
               <th><%= f.label :genre_id, "ジャンル" %></th>
-              <td><%= f.collection_select :genre_id, Book.all, :id, :title, include_blank: "--選択して下さい--" %></td>
+              <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択して下さい--" %></td>
             </tr>
             <tr>
               <th><%= f.label :price, "税抜価格" %></th>
-              <td colspan="2"><%= f.text_field :price, :placeholder => "1000", class: "form-control" %></td>
+              <td colspan="2"><%= f.number_field :price, :placeholder => "1000", class: "form-control" %></td>
               <td style="vertical-align: bottom;"><span>円</span></td>
             </tr>
             <tr>
-              <th><%= f.label :status, "販売ステータス" %></th>
+              <th><%= f.label :is_sale, "販売ステータス" %></th>
               <td>
-                <%= f.radio_button :status, true %>
-                <strong><%= f.label :status_true, "販売中"%></strong>
+                <%= f.radio_button :is_sale, true %>
+                <strong><%= f.label :is_sale_true, "販売中"%></strong>
                 <%= "　　"%>
-                <%= f.radio_button :status, false %>
-                <strong style="color: gray;"><%= f.label :status_false, "販売停止中"%></strong>
+                <%= f.radio_button :is_sale, false %>
+                <strong style="color: gray;"><%= f.label :is_sale_false, "販売停止中"%></strong>
               </td>
             </tr>
             <tr>

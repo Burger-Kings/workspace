@@ -18,7 +18,7 @@
         <% end %>
       </td>
       <td><%= item.price %></td>
-      <td><%= item.genre %></td>
+      <td><%= item.genre.name %></td>
       <% if item.is_sale == true %>
         <td><strong style="color: green;">販売中</strong></td>
       <% else %>
