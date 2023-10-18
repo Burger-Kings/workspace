@@ -2,12 +2,12 @@
   <h2>商品新規登録</h2>
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <%= form_with model: @item do |f| %>
+      <%= form_with model: @item, url: admin_items_path do |f| %>
         <table class="table table-borderless table-sm">
           <tbody>
             <tr>
-              <th><%= f.label :image, "商品画像" %></th>
-              <td><%= f.file_field :image, accept: "image/jpeg" %></td>
+              <th><%= f.label :item_image, "商品画像" %></th>
+              <td><%= f.file_field :item_image, accept: "image/jpeg" %></td>
             </tr>
             <tr>
               <th><%= f.label :name, "商品名" %></th>
@@ -19,11 +19,11 @@
             </tr>
             <tr>
               <th><%= f.label :genre_id, "ジャンル" %></th>
-              <td><%= f.collection_select :genre_id, Book.all, :id, :title, include_blank: "--選択して下さい--",class: "form-control" %></td>
+              <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択して下さい--",class: "form-control" %></td>
             </tr>
             <tr>
               <th><%= f.label :price, "税抜価格" %></th>
-              <td colspan="2"><%= f.text_field :price, :placeholder => "1000", class: "form-control" %></td>
+              <td colspan="2"><%= f.number_field :price, :placeholder => "1000", class: "form-control" %></td>
               <td style="vertical-align: bottom;"><span>円</span></td>
             </tr>
             <tr>
