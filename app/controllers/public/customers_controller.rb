@@ -1,4 +1,4 @@
-class Public::CustomerController < ApplicationController
+class Public::CustomersController < ApplicationController
 
 def show
  @customer = current_customer
