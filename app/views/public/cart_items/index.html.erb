@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <h4>
+    <span class='bg-light p-2'>ショッピングカート</span>
+  </h4>
+  <div class="text-right mb-3">
+    <button class="btn btn-danger">カートを空にする</button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th style='width: 30%;'>商品名</th>
+          <th style='width: 20%;'>単価（税込）</th>
+          <th style='width: 20%;'>数量</th>
+          <th style='width: 20%;'>小計</th>
+          <th style='width: 10%;'>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= image_tag cart_item.image.get_item_image %><%= cart_item.item.name %></td>
+          <td></td>
+          <td>
+            <div class="row">
+              <div class="col-5 col-md-5">
+                <input type="text" value="1" class="form-control" id="quantity">
+              </div>
+              <div class="col-7 col-md-5">
+                <button class="btn btn-primary">変更</button>
+              </div>
+            </div>
+          </td>
+          <td>5000円</td>
+          <td>
+            <button class="btn btn-danger">削除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class='container mt-4'>
+  <div class="d-flex align-items-center">
+    <input class='btn btn-primary ml-5' type='submit' value='買い物を続ける'></input>
+    <div class="ml-auto">
+      <table class="table table-bordered mb-0">
+        <tbody>
+          <tr>
+            <td class="text-left">合計金額</td>
+            <td>500円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="text-center mt-4">
+    <input class='btn btn-success btn-lg' type='submit' value='情報入力に進む'></input>
+  </div>
+</div>
