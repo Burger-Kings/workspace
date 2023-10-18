@@ -14,13 +14,11 @@
           <h5 class="mb-3"><%= @item.introduction %></h5>
           <h5 class="mb-3"><%= @item.price %></h5>
           <div class="d-flex align-items-center">
-            <%= form.with model: @cart_item local: true do |f| %>
-              <%= f.hidden_field :item_id, :value => item_id %>
+            <%= form.with model: cart_item local: true do |f| %>
+              <%= f.hidden_field :item_id, :value => @item_id %>
               <%= f.number_field :amount, placeholder: "個数選択" %>
               <%= f.submit 'カートに入れる', class: 'btn btn-success' %>
             <% end %>
-            <h6 class="mr-3"><%= %></h6>
-            <div><%=  %></div>
           </div>
         </div>
       </div>

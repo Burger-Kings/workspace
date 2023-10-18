@@ -15,7 +15,7 @@
         <h3 style='word-break: break-word;'>新着商品</h3>
           <div class="card" style="width:15rem;">
             <% @items.first(4).each do |item| %>
-            <div><%= attachment_image_tag(item, :image, fallback: 'no-image.png') %></div>
+            <div><%= attachment_image_tag(item, :image, 'no-image.png') %></div>
             <div class="card-body">
             <h5 class="card-title"><%= item.name %></h5>
             <p class="card-text"><%= item.price %></p>
