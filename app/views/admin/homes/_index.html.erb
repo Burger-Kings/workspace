@@ -1,0 +1,26 @@
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.each do |order| %>
+    <tr>
+      <td>
+        <!--注文詳細のパス要確認-->
+        <%= link_to order_detail_path(oder_detail.id) do %>
+         <%= order.created_at %>
+        <% end %>
+      </td>
+      <td><%= order.customer.last_name + oder.customer.first_name %></td>
+      <!--注文個数の表示を調べる-->
+      <td><%= order.order_details.amount.count %></td>
+      <td><%= order.status %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
