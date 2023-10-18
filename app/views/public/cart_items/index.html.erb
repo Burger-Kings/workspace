@@ -3,7 +3,7 @@
     <span class='bg-light p-2'>ショッピングカート</span>
   </h4>
   <div class="text-right mb-3">
-    <button class="btn btn-danger">カートを空にする</button>
+    <div><%= link_to 'カートを空にする', cart_items_destroy_all_path, class: "btn btn-danger", method: :delete %></div>
   </div>
   <div class="table-responsive">
     <table class="table table-bordered">
@@ -17,24 +17,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><%= image_tag cart_item.image.get_item_image %><%= cart_item.item.name %></td>
-          <td></td>
-          <td>
-            <div class="row">
-              <div class="col-5 col-md-5">
-                <input type="text" value="1" class="form-control" id="quantity">
-              </div>
-              <div class="col-7 col-md-5">
-                <button class="btn btn-primary">変更</button>
-              </div>
-            </div>
-          </td>
-          <td>5000円</td>
-          <td>
-            <button class="btn btn-danger">削除</button>
-          </td>
-        </tr>
+        <% @cart_item.each do |cart_item| %>
+          <tr>
+            <td><%= image_tag cart_item.image.get_item_image %><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.with_tax_price %>円</td>
+            <td><%= cart_item.amount %></td>
+            <td>
+              <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
+                <%= f.select :amount, *[1..50] %>
+                <%= f.submit '変更', class: 'btn btn-primary' %>
+              <% end %>
+            </td>
+            <td><%= cart_item.subtotal %></td>
+            <td>
+              <%= link_to '削除する', destroy_cart_item_path(cart_item.id), class: 'btn btn-danger', method: :delete %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
@@ -42,19 +41,20 @@
 
 <div class='container mt-4'>
   <div class="d-flex align-items-center">
-    <input class='btn btn-primary ml-5' type='submit' value='買い物を続ける'></input>
+    <div><%= link_to '買い物を続ける', root_path, class: 'btn btn-primary' %></div>
     <div class="ml-auto">
       <table class="table table-bordered mb-0">
         <tbody>
           <tr>
             <td class="text-left">合計金額</td>
-            <td>500円</td>
+            <% @total += cart_item.subtotal %>
+            <td><%= @total %></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
   <div class="text-center mt-4">
-    <input class='btn btn-success btn-lg' type='submit' value='情報入力に進む'></input>
+    <div><%= link_to '情報入力に進む', orders_new_path, class: 'btn btn-success' %></div>
   </div>
 </div>
