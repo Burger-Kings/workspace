@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row py-5">
+<%= render 'public/homes/genre_table' %>
+
+    <div class="col-12 col-md-10 mt-4 mx-auto text-center">
+      <h2>商品一覧 <small> （全<%= @items_count %> 件）</small></h2>
+      <table class="table table-bordered">
+        <tbody>
+          <% @items.in_groups_of(4, false).each do |group| %>
+            <tr>
+              <% group.each do |item| %>
+                <td>
+                  <%= item.name %>
+                  <br>
+                  <%= item.price %>
+                </td>
+              <% end %>
+              <% (4 - group.size).times { %>
+                <td></td>
+              <% } %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
