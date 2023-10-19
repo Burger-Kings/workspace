@@ -42,7 +42,7 @@
                  <td class="border-dark"><%= address.postal_code %></td>
                  <td class="border-dark"><%= address.address %></td>
                  <td class="border-dark"><%= address.name %></td>
-                 <td class="border-dark mx-auto"><%= link_to "編集する", edit_address_path(address), class:"btn btn-success" %> <%= link_to "削除する", address_path, method: :delete, class:"btn btn-danger" %></td>
+                 <td class="border-dark mx-auto"><%= link_to "編集する", edit_address_path(address), class:"btn btn-success" %> <%= link_to "削除する", address_path(address), method: :delete, class:"btn btn-danger" %></td>
              </tr>
              <% end %>
          </table>

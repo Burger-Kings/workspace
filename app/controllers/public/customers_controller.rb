@@ -10,7 +10,7 @@ end
 
 def update
  @customer = current_customer
- if @customer.update
+ if @customer.update(customer_params)
     redirect_to customers_mypage_path
  else
     render edit
