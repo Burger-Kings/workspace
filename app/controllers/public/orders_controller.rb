@@ -18,7 +18,7 @@ def create
 end
 
 def confirm
-  @order = Order.new
+  @order = Order.new(order_params)
   @cart_items = CartItem.current_customer.cart_items
 end
 

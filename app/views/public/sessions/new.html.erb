@@ -40,9 +40,8 @@
     <span class='bg-light p-2'>会員登録がお済みでない方</span>
     </h5>
     <div class="d-flex justify-content-center">
-      <%= render "customers/shared/links" %>
         <div class="mx-1"></div>
-        <span>から新規登録を行ってください。</span>
+        <span><%= link_to 'こちら', new_customer_registration_path %>から新規登録を行ってください。</span>
     </div>
   </div>
 

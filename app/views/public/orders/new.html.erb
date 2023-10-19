@@ -1,94 +1,80 @@
 <div class="container mt-5">
   <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
   <h5><strong>支払い方法</strong></h5>
-  <div class="form-check ml-5">
-    <%= f.radio_button :payment_method, 'クレジットカード', class: 'form-check-input', id: 'credit_card' %>
-    <%= f.label :payment_method, 'クレジットカード', class: 'form-check-label', for: 'credit_card' %>
-  </div>
-  <div class="form-check ml-5 mt-2">
-    <%= f.radio_button :payment_method, '銀行振込', class: 'form-check-input', id: 'bank_transfer' %>
-    <%= f.label :payment_method, '銀行振込', class: 'form-check-input', for: 'bank_transfer' %>
-  </div>
+    <div class="form-check ml-5">
+      <%= f.radio_button :payment_method, :credit_card, class: 'form-check-input', id: 'credit_card' %>
+      <%= f.label :payment_method_credit_card, 'クレジットカード', class: 'form-check-label', for: 'credit_card' %>
+    </div>
+    <div class="form-check ml-5 mt-2">
+      <%= f.radio_button :payment_method, :bank_transfer, class: 'form-check-input', id: 'bank_transfer' %>
+      <%= f.label :payment_method_bank_transfer, '銀行振込', class: 'form-check-input', for: 'bank_transfer' %>
+    </div>
+
 
   <h5 class="mt-3"><strong>お届け先</strong></h5>
-  <div class="form-check ml-5">
-    <%= f.radio_button :address_option, 0, checked: 'checked', class: 'form-check-input' %>
-    <%= f.label :order_address, 'ご自身の住所', class: 'form-check-label' %>
-  </div>
-  <div class='row'>
-    <div class='col'>
-      <%= current_customer.postal_code %>
+    <div class="form-check ml-5">
+      <%= f.radio_button :address, 'address', checked: 'checked', class: 'form-check-input', name: 'address_option' %>
+      <%= f.label :address, 'ご自身の住所', class: 'form-check-label', for: 'address_option' %>
     </div>
-  </div>
-
-  <div class="form-check ml-5 mt-2">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadio4" value="option4">
-    <label class="form-check-label" for="exampleRadio4">
-      登録済住所から選択
-    </label>
-  </div>
-
-  <div class="form-group ml-4">
-    <div class="col-9 col-md-7">
-    <select class="form-control ml-4 mt-2" id="addressSelect">
-      <option selected>選択してください</option>
-      <option value="address1">住所1</option>
-      <option value="address2">住所2</option>
-      <option value="address3">住所3</option>
-    </select>
+    <div class='row'>
+      <div class='col'>
+        <%= current_customer.postal_code %>
     </div>
-  </div>
-
-  <div class="form-check ml-5 mb-3">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadio5" value="option5">
-    <label class="form-check-label" for="exampleRadio5">
-      新しいお届け先
-    </label>
-  </div>
-
-  <div class="ml-5">
-    <div class="form-row">
-      <div class="col-6 col-md-3 ml-md-4">
-        <label for="postalCode">郵便番号（ハイフンなし）</label>
+      <div class='col'>
+        <%= current_customer.address %>
       </div>
+    </div>
+    <div class='row'>
+      <div class='col'>
+        <%= current_customer.last_name %>
+      </div>
+      <div class='col'>
+        <%= current_customer.first_name %>
+      </div>
+    </div>
+
+    <div class="form-check ml-5 mt-2">
+      <%= f.radio_button :address, 'registered_address', class: 'form-check-input', name: 'address_option' %>
+      <%= f.label :address, '登録済住所から選択', class: 'form-check-label', for: 'address_option' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :customer_id, @addresses, :id, :adresses, {include_blank: true }, class: 'form-control' %>
+    </div>
+
+    <div class="form-check ml-5 mb-3">
+      <%= f.radio_button :address, 'new_address', class: 'form-check-input', name: 'address_option' %>
+      <%= f.label :address, '新しいお届け先', class: 'form-check-label', for: 'address_option' %>
+    </div>
+  <div class="ml-5">
+    <div class="form-group row">
+      <label for='postal_code' class="col-6 col-md-3 ml-md-4">郵便番号（ハイフンなし）</label>
       <div class="col-6 col-md-3">
-        <div class="form-group">
-          <input type="text" class="form-control" id="postalCode" placeholder="郵便番号を入力">
-        </div>
+        <%= f.text_field :postal_code, id: 'postal_code', class: 'form-control', placeholder: '0000000' %>
       </div>
     </div>
   </div>
 
   <div class="ml-5">
-    <div class="form-row">
-      <div class="col-6 col-md-3 ml-md-4">
-        <label for="address">住所</label>
-      </div>
+    <div class="form-group row">
+      <label for='address' class="col-6 col-md-3 ml-md-4">住所</label>
       <div class="col-6 col-md-7">
-        <div class="form-group">
-          <input type="text" class="form-control" id="address" placeholder="住所を入力">
-        </div>
+        <%= f.text_field :address, id: 'address', class: 'form-control', placeholder: '東京都千代田区千代田1-1' %>
       </div>
     </div>
   </div>
 
 
   <div class="ml-5">
-    <div class="form-row">
-      <div class="col-6 col-md-3 ml-md-4">
-        <label for "recipient">宛名</label>
-      </div>
+    <div class="form-group row">
+      <label for='name' class="col-6 col-md-3 ml-md-4">宛名</label>
       <div class="col-6 col-md-3">
-        <div class="form-group">
-          <input type="text" class="form-control" id="recipient" placeholder="宛名を入力">
-        </div>
+        <%= f.text_field :name, id: 'name', class: 'form-control', placeholder: '令和道子' %>
       </div>
     </div>
   </div>
-
 
 <div class="col-sm-3 mx-auto mt-2">
-  <input class="btn btn-primary btn-lg btn-block" type="submit" value="確認画面へ進む">
+  <div><%= f.submit '確認画面に進む', class: 'btn btn-primary' %></div>
 </div>
-
+<% end %>
 </div>
