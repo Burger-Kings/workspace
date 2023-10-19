@@ -1,7 +1,7 @@
 <div class="container">
-    <h4> <span class="w-25 mt-5" style="background-color: #eee">会員情報編集</span></h4>
+    <h4 class="mt-4"> <span class="w-25" style="background-color: #eee">会員情報編集</span></h4>
     
-    <%= form_with(model:@customer, url:customers_information_edit_path, method: :patch), local:true do |f| %>
+    <%= form_with model:@customer, url:customers_mypage_path, method: :patch, local:true do |f| %>
   <div class="row mt-5">
    <div class="col">
     <table class="table table-borderless">

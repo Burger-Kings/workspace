@@ -1,5 +1,5 @@
 <div class="container">
-<h4><span class="w-25 mt-5" style="background-color: #eee">注文履歴一覧</span></h4>
+<h4 class="mt-5"><span class="w-25" style="background-color: #eee">注文履歴一覧</span></h4>
 
  <div class="row">
     <table class="table table-bordered">
@@ -23,8 +23,8 @@
             <td><%= order.total_price %></td>
             <td><%= order.status %></td>
             <td><%= link_to "表示する",order_path(order),class:"btn btn-primary" %></td>
-            
         </tr>
+            <% end %>
     </table>
  </div>
 </div>
