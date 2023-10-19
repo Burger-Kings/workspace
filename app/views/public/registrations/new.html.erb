@@ -4,28 +4,27 @@
   </h2>
   <div>
     <%= form_with(model: resource, url: registration_path(resource_name)) do |f| %>
-    <%= render "customers/shared/error_messages", resource: resource %>
 
       <div class="form-group row">
-        <label for='email' class='col-sm-1 col-form-label'>名前</label>
-        <label for="email" class="col-sm-2 col-form-label text-right">（性）</label>
+        <label for='name' class='col-sm-1 col-form-label'>名前</label>
+        <label for="name" class="col-sm-2 col-form-label text-right">（性）</label>
         <div class="col-sm-3">
-          <%= f.text_field :email, id: 'email', class: 'form-control', placeholder: 'Email' %>
+          <%= f.text_field :last_name, id: 'name', class: 'form-control', placeholder: '令和' %>
         </div>
         <label for="new_field" class="col-sm-2 col-form-label text-right">（名）</label>
         <div class="col-sm-3">
-          <%= f.text_field :email, id: 'emai', class: 'form-control', placeholder: 'Email' %>
+          <%= f.text_field :first_name, id: 'name', class: 'form-control', placeholder: '道子' %>
         </div>
       </div>
       <div class="form-group row">
-        <label for="email" class="col-sm-1 col-form-label">フリガナ</label>
-        <label for="email" class="col-sm-2 col-form-label text-right">（セイ）</label>
+        <label for="kana" class="col-sm-1 col-form-label">フリガナ</label>
+        <label for="kana" class="col-sm-2 col-form-label text-right">（セイ）</label>
         <div class="col-sm-3">
-          <%= f.text_field :email, id: 'email', class: 'form-control', placeholder: 'Email' %>
+          <%= f.text_field :last_name_kana, id: 'kana', class: 'form-control', placeholder: 'レイワ' %>
         </div>
         <label for="new_field" class=" col-sm-2 col-form-label text-right">（メイ）</label>
         <div class="col-sm-3">
-          <%= f.text_field :email, id: 'emai', class: 'form-control', placeholder: 'Email' %>
+          <%= f.text_field :first_name_kana, id: 'kana', class: 'form-control', placeholder: 'ミチコ' %>
         </div>
       </div>
       <div class="form-group row">
@@ -35,21 +34,21 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="email" class="col-sm-3 col-form-label">郵便番号（ハイフンなし）</label>
+        <label for="postal_code" class="col-sm-3 col-form-label">郵便番号（ハイフンなし）</label>
         <div class="col-sm-3">
-          <%= f.text_field :email, id: 'email', class: 'form-control', placeholder: 'Email' %>
+          <%= f.text_field :postal_code, id: 'postal_code', class: 'form-control', placeholder: '0000000' %>
         </div>
       </div>
       <div class="form-group row">
-        <label for="email" class="col-sm-3 col-form-label">住所</label>
+        <label for="address" class="col-sm-3 col-form-label">住所</label>
         <div class="col-sm-3">
-          <%= f.text_field :email, id: 'email', class: 'form-control', placeholder: 'Email' %>
+          <%= f.text_field :address, id: 'address', class: 'form-control', placeholder: 'ハンバーガーランド' %>
         </div>
       </div>
       <div class="form-group row">
-        <label for="email" class="col-sm-3 col-form-label">電話番号（ハイフンなし）</label>
+        <label for="telephone_number" class="col-sm-3 col-form-label">電話番号（ハイフンなし）</label>
         <div class="col-sm-3">
-          <%= f.text_field :email, id: 'email', class: 'form-control', placeholder: 'Email' %>
+          <%= f.text_field :telephone_number, id: 'telephone_number', class: 'form-control', placeholder: '00000000000' %>
         </div>
       </div>
       <div class="form-group row">
@@ -76,9 +75,8 @@
     <span class='bg-light p-2'>既に登録済みの方</span>
   </h4>
 <div class="d-flex ml-4">
-  <%= render "customers/shared/links" %>
   <div class="mx-1"></div>
-  <span>からログインしてください</span>
+  <span><%= link_to 'こちら',new_customer_session_path %>からログインしてください</span>
 </div>
 
 </div>
