@@ -1,8 +1,6 @@
 class Public::OrdersController < ApplicationController
-  
+
 def new
- @order = Order.new
- @addresses = current_customer.addresses.all
 end
 
 def index
@@ -11,7 +9,7 @@ end
 
 def show
  @order = Order.find(params[:id])
- @order_detail = @order.order_details
+ @order_items = @order.order_details.all
 end
 
 def create
