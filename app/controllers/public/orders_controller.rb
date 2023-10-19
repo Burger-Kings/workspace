@@ -23,7 +23,7 @@ def create
   @order_items.order_id = @order.id
   @order_items.item_id = cart_item.item_id
   @order_items.amount = cart_item.amount
-  @order_items.price = (cart_item.item.price *1.1).floor
+  @order_items.price = (cart_item.item.price*1.1).floor
   @order_items.save
  end
  current_customer.cart_items.destroy_all
@@ -31,7 +31,6 @@ def create
 end
 
 def confirm
-  @addresses = current_customer.addresses.all
   @order = Order.new(order_params)
   if params[:order][:address_option] == "0"
     @order.postal_code = current_customer.postal_code
@@ -47,8 +46,8 @@ def confirm
     @order.address = params[:order][:address]
     @order.name = params[:order][:name]
   end
-  @cart_items = current_customer.cart_items.all
-  @order.customer_id = current_customer.id
+    @order.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items.all
 end
 
 

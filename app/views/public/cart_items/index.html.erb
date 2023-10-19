@@ -1,58 +1,63 @@
 <div class="container mt-5">
-  <h4>
-    <span class='bg-light p-2'>ショッピングカート</span>
+  <h4 class="ml-4">
+    <span class="bg-light p-2">ショッピングカート</span>
   </h4>
-  <div class="text-right mb-3">
+  <div class="text-right mb-3 mt-3">
     <div><%= link_to 'カートを空にする', cart_items_destroy_all_path, class: "btn btn-danger", method: :delete %></div>
   </div>
   <div class="table-responsive">
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th style='width: 30%;'>商品名</th>
-          <th style='width: 20%;'>単価（税込）</th>
-          <th style='width: 20%;'>数量</th>
-          <th style='width: 20%;'>小計</th>
-          <th style='width: 10%;'>操作</th>
+          <th style="width: 30%;">商品名</th>
+          <th style="width: 20%;">単価（税込）</th>
+          <th style="width: 20%;">数量</th>
+          <th style="width: 20%;">小計</th>
+          <th style="width: 10%;"></th>
         </tr>
       </thead>
       <tbody>
         <% @cart_items.each do |cart_item| %>
-          <tr>
-            <td><%= image_tag cart_item.image.get_item_image %><%= cart_item.item.name %></td>
-            <td><%= (cart_item.item.price *1.1).to_i %>円</td>
-            <td><%= cart_item.amount %></td>
-            <td>
-              <%= form_with model: cart_item, url: cart_item_path(cart_item), local: true do |f| %>
-                <%= f.select :amount, *[1..50] %>
-                <%= f.submit '変更', class: 'btn btn-primary' %>
-              <% end %>
-            </td>
-            <% subtotal = ((cart_item.item.price * cart_item.amount) *1.1).to_i %>
-            <td><%= subtotal %></td>
-            <td>
-              <%= link_to '削除する', destroy_cart_item_path(cart_item.id), class: 'btn btn-danger', method: :delete %>
-            </td>
-          </tr>
+        <tr>
+          <td style="vertical-align: middle;">
+            <%= image_tag cart_item.item.item_image, size: "100x70" %>
+            <%= cart_item.item.name %>
+          </td>
+          <td style="vertical-align: middle;"><%= (cart_item.item.price * 1.1).to_i %>円</td>
+          <td style="vertical-align: middle;">
+            <%= form_with model: cart_item, url: cart_items_path(cart_item.id), local: true do |f| %>
+              <%= f.select :amount, (1..50) %>
+              <%= f.submit '変更', class: 'btn btn-primary' %>
+            <% end %>
+          </td>
+          <% subtotal = ((cart_item.item.price * cart_item.amount) * 1.1).to_i %>
+          <td style="vertical-align: middle;"><%= subtotal %>円</td>
+          <td style="vertical-align: middle;">
+            <%= link_to '削除する', cart_item_path(cart_item), class: 'btn btn-danger text-nowrap', method: :delete %>
+          </td>
+        </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
 </div>
 
-<div class='container mt-4'>
-  <div class="d-flex align-items-center">
-    <div><%= link_to '買い物を続ける', root_path, class: 'btn btn-primary' %></div>
+<div class="container mt-4">
+  <div class="d-flex flex-column flex-md-row align-items-center">
+    <div class="mb-2 mb-md-0"><%= link_to '買い物を続ける', root_path, class: 'btn btn-primary' %></div>
     <div class="ml-auto">
       <table class="table table-bordered mb-0">
         <tbody>
           <tr>
             <td class="text-left">合計金額</td>
-            <% total_price += subtotal %>
-            <td><%= total_price %></td>
+            <% total_price = 0 %>
+            <% @cart_items.each do |cart_item| %>
+              <% total_price += ((cart_item.item.price * cart_item.amount) * 1.1).to_i %>
+            <% end %>
+            <td style="vertical-align: middle;"><%= total_price %>円</td>
           </tr>
         </tbody>
       </table>
-      <% end %>
     </div>
   </div>
   <div class="text-center mt-4">

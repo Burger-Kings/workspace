@@ -17,7 +17,7 @@
           <% @cart_items.each do |cart_item| %>
           <tr>
             <td>
-              <%= attachment_image_tag(cart_item.item, :image, fallback: 'no-image.png') %>
+              <%= image_tag cart_item.item.item_image, size: "100x70" %>
               <%= cart_item.item.name %>
             </td>
             <td><%= (cart_item.item.price * 1.1).to_i %></td>
