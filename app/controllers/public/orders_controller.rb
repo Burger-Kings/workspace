@@ -11,23 +11,24 @@ end
 
 def show
  @order = Order.find(params[:id])
- @order_items = @order.order_details.all
+ @order_items = @order.order_details
 end
 
 def create
  @order = Order.new(order_params)
  @order.customer_id = current_customer.id
  @order.save
- current_customer.cart_items.each do |cart_item|
-  @order_items = OrderDetail.new
-  @order_items.order_id = @order.id
-  @order_items.item_id = cart_item.item_id
-  @order_items.amount = cart_item.amount
-  @order_items.price = (cart_item.item.price*1.1).floor
-  @order_items.save
+  current_customer.cart_items.each do |cart_item|
+    @order_items = OrderDetail.new
+    @order_items.order_id = @order.id
+    @order_items.item_id = cart_item.item_id
+    @order_items.amount = cart_item.amount
+    @order_items.price = (cart_item.item.price*1.1).floor
+    if @order_items.save
+      current_customer.cart_items.destroy_all
+    end
+    redirect_to orders_complete_path
  end
- current_customer.cart_items.destroy_all
- redirect_to orders_complete_path
 end
 
 def confirm
