@@ -1,2 +1,64 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <h3>注文履歴詳細</h3>
+  <div class="row">
+    <div class="col-md-10 col-lg-8 px-5 px-sm-0 my-5">
+      <table class="table table-sm table-borderless">
+        <tbody>
+          <tr>
+            <th>購入者</th>
+            <td><%= @order.customer.last_name %></td>
+          </tr>
+          <tr>
+            <th>注文日</th>
+            <td><%= @order.created_at %></td>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <td><%= @order.address %></td>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <td><%= @order.payment_method %></td>
+          </tr>
+          <tr>
+            <th>注文ステータス</th>
+            <%= form_with model: @order do |f| %>
+              <td>
+                <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択して下さい--",class: "form-control" %><%= "　　" %>
+                <%= button_to "更新", {controller: 'orders', action: 'update'}, {method: :patch} %>
+              </td>
+            <% end %>
+          </tr>
+          <tr>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>制作ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_details.each do |order_detail| %>
+        <tr>
+          <td><%= order_detail.item.name %></td>
+          <td><%= order_detail.item.price %></td>
+          <td><%= order_detail.amount %></td>
+          <td><%= order_detail.item.price %></td>
+          <!--status-->
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
