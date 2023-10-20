@@ -29,17 +29,25 @@
          <table class="table table-bordered">
              <tr>
                  <td class="table-secondary border-dark">商品合計</td>
-                 <td class="border-dark"><%= @order.total_price %></td>
+                   <% total = 0 %>
+                    <% @order_items.each do |order_item| %>
+                      <% total += (order_item.price * order_item.amount) %>
+                    <% end %>
+                 <td class="border-dark">
+                   <%= total %>
+                 </td>
              </tr>
              
              <tr>
                  <td class="table-secondary border-dark">配送料</td>
-                 <td class="border-dark">800</td>
+                 <td class="border-dark">
+                     <% @order.shipping_fee = 800 %>
+                     <%= @order.shipping_fee %></td>
              </tr>
              
              <tr>
                  <td class="table-secondary border-dark font-weight-bold">ご請求額</td>
-                 <td class="border-dark"><%= (@order.total_price+800) %></td>
+                 <td class="border-dark"><%= (total + 800).to_i %></td>
              </tr>
              
          </table>
@@ -62,7 +70,9 @@
             　   <td class="border-dark"><%= order_item.item.name %></td>
             　    <td class="border-dark"><%= order_item.price %></td>
             　    <td class="border-dark"><%= order_item.amount %></td>
-            　    <td class="border-dark"><%=(order_item.price*order_item.amount)%></td>
+            　    <td class="border-dark">
+            　        <% subtotal = (order_item.price * order_item.amount).to_i %>
+                     <%= subtotal %>></td>
             　 </tr>
             　 <% end %>
          　　</table>
