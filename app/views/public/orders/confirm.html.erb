@@ -17,7 +17,7 @@
           <% @cart_items.each do |cart_item| %>
           <tr>
             <td>
-              <%= image_tag cart_item.item.item_image, size: "100x70" %>
+              <%= image_tag cart_item.item.get_item_image(100,100) %>
               <%= cart_item.item.name %>
             </td>
             <td><%= (cart_item.item.price * 1.1).to_i %></td>
@@ -32,7 +32,7 @@
       </table>
     </div>
     <div class="col-md-4">
-      <table class="table table-bordered">
+      <table class="table table-bordered mt-4">
         <tbody>
           <tr>
             <th>送料</th>
@@ -64,7 +64,7 @@
   </h5>
 
   <div class="col-sm-3 mx-auto mt-5">
-    <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+    <%= form_with model: @order, url: orders_path, method: :post do |f| %>
       <%= f.hidden_field :customer_id %>
       <%= f.hidden_field :shipping_fee %>
       <%= f.hidden_field :payment_method %>

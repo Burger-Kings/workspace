@@ -20,20 +20,20 @@
         <% @cart_items.each do |cart_item| %>
         <tr>
           <td style="vertical-align: middle;">
-            <%= image_tag cart_item.item.item_image, size: "100x70" %>
+            <%= image_tag cart_item.item.get_item_image(100,100) %>
             <%= cart_item.item.name %>
           </td>
           <td style="vertical-align: middle;"><%= (cart_item.item.price * 1.1).to_i %>円</td>
           <td style="vertical-align: middle;">
-            <%= form_with model: cart_item, url: cart_items_path(cart_item.id), local: true do |f| %>
-              <%= f.select :amount, (1..50) %>
+            <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true, method: :patch do |f| %>
+              <%= f.number_field :amount, min: 1, max: 10  %>
               <%= f.submit '変更', class: 'btn btn-primary' %>
             <% end %>
           </td>
           <% subtotal = ((cart_item.item.price * cart_item.amount) * 1.1).to_i %>
           <td style="vertical-align: middle;"><%= subtotal %>円</td>
           <td style="vertical-align: middle;">
-            <%= link_to '削除する', cart_item_path(cart_item), class: 'btn btn-danger text-nowrap', method: :delete %>
+            <%= link_to '削除する', cart_item_path(cart_item), class: 'btn btn-danger text-nowrap', method: :delete, data: { confirm: "削除しますか？" } %>
           </td>
         </tr>
         <% end %>
