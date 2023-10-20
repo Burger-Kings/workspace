@@ -27,8 +27,8 @@ def create
     if @order_items.save
       current_customer.cart_items.destroy_all
     end
-    redirect_to orders_complete_path
  end
+ redirect_to orders_complete_path
 end
 
 def confirm
