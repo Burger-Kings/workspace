@@ -5,6 +5,7 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @tax =1.1
   end
 
   def new
