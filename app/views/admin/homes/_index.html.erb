@@ -12,13 +12,13 @@
     <tr>
       <td>
         <!--注文詳細のパス要確認-->
-        <%= link_to order_detail_path(oder_detail.id) do %>
+        <%= link_to admin_order_path(order) do %>
          <%= order.created_at %>
         <% end %>
       </td>
-      <td><%= order.customer.last_name + oder.customer.first_name %></td>
+      <td><%= order.customer.last_name + order.customer.first_name %></td>
       <!--注文個数の表示を調べる-->
-      <td><%= order.order_details.amount.count %></td>
+      <td><%= "" %></td>
       <td><%= order.status %></td>
     </tr>
     <% end %>
