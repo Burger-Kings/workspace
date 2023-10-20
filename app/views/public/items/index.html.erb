@@ -1,27 +1,27 @@
 <div class="container">
   <div class="row py-5">
-<%= render 'public/homes/genre_table' %>
+    <%= render 'public/homes/genre_table' %>
 
-    <div class="col-12 col-md-10 mt-4 mx-auto text-center">
-      <h2>商品一覧 <small> （全<%= @items_count %> 件）</small></h2>
-      <table class="table table-bordered">
-        <tbody>
-          <% @items.in_groups_of(4, false).each do |group| %>
-            <tr>
-              <% group.each do |item| %>
-                <td>
-                  <%= item.name %>
-                  <br>
-                  <%= item.price %>
-                </td>
+    <div class="col-12 col-md-10 mt-4 mx-auto">
+      <div class="row align-items-center">
+        <div class="col-md-12 mb-3">
+          <h2 class="ml-md-5">商品一覧 <small> （全<%= @items_count %> 件）</small></h2>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <% @items.each do |item| %>
+            <div class="col-md-3 col-sm-6 mb-4">
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.item_image, class: "img-fluid" %>
               <% end %>
-              <% (4 - group.size).times { %>
-                <td></td>
-              <% } %>
-            </tr>
+              <h5 class="mt-3"><%= item.name %></h5>
+              <p><%= item.price %>円</p>
+            </div>
           <% end %>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

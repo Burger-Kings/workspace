@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :order_details, dependent: :destroy
 
-  has_one_attached :image
+  has_one_attached :item_image
 
   def get_item_image(width, height)
     unless item_image.attached?
