@@ -41,15 +41,13 @@
              <tr>
                  <td class="table-secondary border-dark">配送料</td>
                  <td class="border-dark">
-                     <% @order.shipping_fee = 800 %>
-                     <%= @order.shipping_fee %></td>
+                    <%= @order.shipping_fee %></td>
              </tr>
              
              <tr>
                  <td class="table-secondary border-dark font-weight-bold">ご請求額</td>
-                 <td class="border-dark"><%= (total + 800).to_i %></td>
+                 <td class="border-dark"><%= (total + 800) %></td>
              </tr>
-             
          </table>
      </div>
  </div>
@@ -72,7 +70,7 @@
             　    <td class="border-dark"><%= order_item.amount %></td>
             　    <td class="border-dark">
             　        <% subtotal = (order_item.price * order_item.amount).to_i %>
-                     <%= subtotal %>></td>
+                     <%= subtotal %></td>
             　 </tr>
             　 <% end %>
          　　</table>
