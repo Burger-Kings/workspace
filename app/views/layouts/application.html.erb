@@ -47,6 +47,8 @@
             </form>
 
           <% elsif customer_signed_in? %>
+          　<li class="text-white">ようこそ、<%= current_customer.last_name %>さん！</li>
+          
             <li class="nav-item">
               <%= link_to 'マイページ', customers_mypage_path, class: 'btn btn-dark' %>
             </li>
