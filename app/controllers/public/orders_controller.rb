@@ -28,7 +28,7 @@ def create
       current_customer.cart_items.destroy_all
     end
  end
-  redirect_to orders_complete_path
+ redirect_to orders_complete_path
 end
 
 def confirm

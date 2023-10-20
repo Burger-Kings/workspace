@@ -33,7 +33,7 @@
       <%= f.label :address, '登録済住所から選択', class: 'form-check-label' %>
     </div>
     <div class="form-group ml-5">
-      <%= f.collection_select :customer_id, @addresses, :id, :addresses, class: "form-control" %>
+      <%= f.collection_select :customer_id, @addresses, :id, :address, class: "form-control" %>
     </div>
 
     <div class="form-check ml-5 mb-3">
