@@ -22,13 +22,12 @@ devise_for :admin,skip: [:passwords, :registrations], controllers: {
     root "homes#top"
     get "about" => "homes#about"
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:update, :index, :create, :destroy]
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
+    resources :cart_items, only: [:update, :index, :create, :destroy]
+    get "orders/complete" => "orders#complete"
     resources :orders, only: [:new, :index, :create, :show]
     post "orders/confirm" => "orders#confirm"
-    get "orders/complete" => "orders#complete"
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    
     get "customers/mypage" => "customers#show"
     get "customers/information/edit" => "customers#edit"
     patch "customers/mypage" => "customers#update"
