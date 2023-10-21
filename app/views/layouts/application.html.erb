@@ -27,7 +27,7 @@
 
           <% if admin_signed_in? %>
             <li class='nav-item'>
-              <%= link_to '商品一覧', items_path, class: 'btn btn-dark' %>
+              <%= link_to '商品一覧', admin_items_path, class: 'btn btn-dark' %>
             </li>
             <li class='nav-item'>
               <%= link_to '会員一覧', admin_customers_path, class: 'btn btn-dark' %>
@@ -39,16 +39,13 @@
               <%= link_to 'ジャンル一覧', admin_genres_path, class: 'btn btn-dark' %>
             </li>
             <li class='nav-item'>
-              <%= link_to 'ログアウト', admin_sign_out_path, class: 'btn btn-dark' %>
+              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-dark' %>
             </li>
-            <form class="form-inline">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
+            <%= render 'layouts/admin_search' %>
 
           <% elsif customer_signed_in? %>
           　<li class="text-white">ようこそ、<%= current_customer.last_name %>さん！</li>
-          
+
             <li class="nav-item">
               <%= link_to 'マイページ', customers_mypage_path, class: 'btn btn-dark' %>
             </li>
