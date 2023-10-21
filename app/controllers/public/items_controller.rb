@@ -19,4 +19,10 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
     @genre = Genre.find(params[:genre_id])
   end
+  
+  def search_name
+    @content = params[:content]
+    @records = Item.search_for(@content)
+    @genres = Genre.all
+  end
 end

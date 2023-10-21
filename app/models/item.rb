@@ -3,6 +3,10 @@ class Item < ApplicationRecord
   has_many :order_details, dependent: :destroy
 
   has_one_attached :item_image
+  
+  def self.search_for(content)
+    Item.where("name LIKE?","%#{content}%")
+  end
 
   def get_item_image(width, height)
     unless item_image.attached?

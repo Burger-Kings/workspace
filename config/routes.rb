@@ -23,6 +23,7 @@ devise_for :admin,skip: [:passwords, :registrations], controllers: {
     get "about" => "homes#about"
     resources :items, only: [:index, :show] do
       get :search, on: :collection
+      get :search_name, on: :collection
     end
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
     resources :cart_items, only: [:update, :index, :create, :destroy]
