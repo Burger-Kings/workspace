@@ -1,0 +1,19 @@
+    
+ <div class="col-12 col-md-2">
+      <div class="text-left">
+        <table class="table custom_table table-sm table-bordered">
+          <thead class="text-center">
+            <tr>
+              <th>ジャンル検索</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <% @genre.each do |genre| %>
+                <td><%= genre.name %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>    
