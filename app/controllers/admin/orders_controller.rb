@@ -14,9 +14,13 @@ class Admin::OrdersController < ApplicationController
     redirect_to admin_order_path(@order)
   end
 
+  def index
+    @orders = Order.find(customer.id)
+
+  end
   private
 
   def order_params
-    params.require(:order).permit(:address, :name, :shipping_cost, :total_payment, :payment_method, :status)
+    params.require(:order).permit(:address, :name, :shipping_fee, :total_price, :payment_method, :status)
   end
 end

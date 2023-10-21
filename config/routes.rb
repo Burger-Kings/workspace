@@ -11,8 +11,10 @@ devise_for :admin,skip: [:passwords, :registrations], controllers: {
 
   namespace :admin do
     get "/" => 'homes#top'
+    get "search" => "searches#search"
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    get "customers/:id/history" => "customers#history", as: 'customer_history'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]

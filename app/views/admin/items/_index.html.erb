@@ -13,7 +13,7 @@
     <tr>
       <td><%= item.id %></td>
       <td>
-        <%= link_to edit_admin_item_path(item) do %>
+        <%= link_to admin_item_path(item) do %>
           <%= item.name %>
         <% end %>
       </td>
@@ -28,3 +28,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate items %>
