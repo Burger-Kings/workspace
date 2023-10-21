@@ -1,14 +1,14 @@
 @use '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&display=swap');
 
 
 body {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Shippori Mincho', serif;
 }
 
 .btn-dark {
-  background: #f5def6;
-  color: #ff7baf;
+  background: #012B28;
+  color: #EBB42C;
   border: none;
 }
 
@@ -32,12 +32,26 @@ body {
     }
   }
 
-
-/* カスタムスタイル.css */
 .navbar {
-    background-color: #f5def6; 
+    background-color: #012B28;
 }
 
-.navbar.a:hover {
-  background-color: #f5def6!important;
+.nav-item a:hover {
+  background-color: #012B28!important;
+  color: #fff;
+}
+
+.navbar-toggler-icon {
+    background-color: #aaa;
+    border: 2px solid #aaa;
+    width: 30px;
+    height: 3px;
+}
+
+.custom_font {
+  font-size: 12px;
+}
+
+footer {
+  background-color: #012B28;
 }
