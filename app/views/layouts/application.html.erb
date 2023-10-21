@@ -14,10 +14,10 @@
   <body>
 
     <header>
-      <nav class="navbar navbar-expand-lg py-4">
+      <nav class="navbar navbar-expand-lg py-2">
         <div class="container">
           <a class="navbar-brand" href="/">
-            <%= image_tag "shortcake.png",width: '120px', class: "img-fluid" %>
+            <%= image_tag "logo.jpg",width: '120px', class: "img-fluid" %>
           </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -48,7 +48,7 @@
 
           <% elsif customer_signed_in? %>
           　<li class="text-white">ようこそ、<%= current_customer.last_name %>さん！</li>
-          
+
             <li class="nav-item">
               <%= link_to 'マイページ', customers_mypage_path, class: 'btn btn-dark' %>
             </li>
@@ -90,9 +90,12 @@
     </header>
 
     <%= yield %>
-    <footer style="height: 150px;">
-      <h1 class='text-center'>Footer</h1>
-    </footer>
+
+<footer class="fixed-bottom text-center">
+  <div class="container">
+    <p style="color: #aaa;">&copy; 2023 Nagano Cakes</p>
+  </div>
+</footer>
   </body>
 </html>
 

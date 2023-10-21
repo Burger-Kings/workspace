@@ -3,80 +3,80 @@
     <span class='bg-light p-2'>新規会員登録</span>
   </h2>
   <div>
-    <%= form_with(model: resource, url: registration_path(resource_name)) do |f| %>
+     <%= form_with(model: resource, url: registration_path(resource_name)) do |f| %>
 
-      <div class="form-group row">
-        <label for='name' class='col-sm-1 col-form-label'>名前</label>
-        <label for="name" class="col-sm-2 col-form-label text-right">（性）</label>
-        <div class="col-sm-3">
-          <%= f.text_field :last_name, id: 'name', class: 'form-control', placeholder: '令和' %>
+        <div class="form-group row">
+          <label for='name' class='col-sm-1 col-form-label'>名前</label>
+          <label for="name" class="col-sm-2 col-form-label text-right">（性）</label>
+          <div class="col-sm-3">
+            <%= f.text_field :last_name, id: 'name', class: 'form-control', placeholder: '令和', required: true %>
+          </div>
+          <label for="new_field" class="col-sm-2 col-form-label text-right">（名）</label>
+          <div class="col-sm-3">
+            <%= f.text_field :first_name, id: 'name', class: 'form-control', placeholder: '道子', required: true %>
+          </div>
         </div>
-        <label for="new_field" class="col-sm-2 col-form-label text-right">（名）</label>
-        <div class="col-sm-3">
-          <%= f.text_field :first_name, id: 'name', class: 'form-control', placeholder: '道子' %>
+        <div class="form-group row">
+          <label for="kana" class="col-sm-1 col-form-label">フリガナ</label>
+          <label for="kana" class="col-sm-2 col-form-label text-right">（セイ）</label>
+          <div class="col-sm-3">
+            <%= f.text_field :last_name_kana, id: 'kana', class: 'form-control', placeholder: 'レイワ', required: true %>
+          </div>
+          <label for="new_field" class="col-sm-2 col-form-label text-right">（メイ）</label>
+          <div class="col-sm-3">
+            <%= f.text_field :first_name_kana, id: 'kana', class: 'form-control', placeholder: 'ミチコ', required: true %>
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="kana" class="col-sm-1 col-form-label">フリガナ</label>
-        <label for="kana" class="col-sm-2 col-form-label text-right">（セイ）</label>
-        <div class="col-sm-3">
-          <%= f.text_field :last_name_kana, id: 'kana', class: 'form-control', placeholder: 'レイワ' %>
+        <div class="form-group row">
+          <label for="email" class="col-sm-3 col-form-label">メールアドレス</label>
+          <div class="col-sm-3">
+            <%= f.text_field :email, id: 'email', class: 'form-control', placeholder: 'Email', required: true %>
+          </div>
         </div>
-        <label for="new_field" class=" col-sm-2 col-form-label text-right">（メイ）</label>
-        <div class="col-sm-3">
-          <%= f.text_field :first_name_kana, id: 'kana', class: 'form-control', placeholder: 'ミチコ' %>
+        <div class="form-group row">
+          <label for="postal_code" class="col-sm-3 col-form-label">郵便番号（ハイフンなし）</label>
+          <div class="col-sm-3">
+            <%= f.text_field :postal_code, id: 'postal_code', class: 'form-control', placeholder: '0000000', required: true %>
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="email" class="col-sm-3 col-form-label">メールアドレス</label>
-        <div class="col-sm-3">
-          <%= f.text_field :email, id: 'email', class: 'form-control', placeholder: 'Email' %>
+        <div class="form-group row">
+          <label for="address" class="col-sm-3 col-form-label">住所</label>
+          <div class="col-sm-3">
+            <%= f.text_field :address, id: 'address', class: 'form-control', placeholder: 'ハンバーガーランド', required: true %>
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="postal_code" class="col-sm-3 col-form-label">郵便番号（ハイフンなし）</label>
-        <div class="col-sm-3">
-          <%= f.text_field :postal_code, id: 'postal_code', class: 'form-control', placeholder: '0000000' %>
+        <div class="form-group row">
+          <label for="telephone_number" class="col-sm-3 col-form-label">電話番号（ハイフンなし）</label>
+          <div class="col-sm-3">
+            <%= f.text_field :telephone_number, id: 'telephone_number', class: 'form-control', placeholder: '00000000000', required: true %>
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="address" class="col-sm-3 col-form-label">住所</label>
-        <div class="col-sm-3">
-          <%= f.text_field :address, id: 'address', class: 'form-control', placeholder: 'ハンバーガーランド' %>
+        <div class="form-group row">
+          <label for="password" class="col-sm-3 col-form-label">パスワード（6文字以上）</label>
+          <div class="col-sm-3">
+            <%= f.password_field :password, id: 'password', class: 'form-control', placeholder: 'Password', required: true %>
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="telephone_number" class="col-sm-3 col-form-label">電話番号（ハイフンなし）</label>
-        <div class="col-sm-3">
-          <%= f.text_field :telephone_number, id: 'telephone_number', class: 'form-control', placeholder: '00000000000' %>
+        <div class="form-group row">
+          <label for="password_confirmation" class="col-sm-3 col-form-label">パスワード確認</label>
+          <div class="col-sm-3">
+            <%= f.password_field :password_confirmation, id: 'password_confirmation', class: 'form-control', placeholder: 'Password Confirmation', required: true %>
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="password" class="col-sm-3 col-form-label">パスワード（6文字以上）</label>
-        <div class="col-sm-3">
-          <%= f.password_field :password, id: 'password', class: 'form-control', placeholder: 'Password' %>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="password_confirmation" class="col-sm-3 col-form-label">パスワード確認</label>
-        <div class="col-sm-3">
-          <%= f.password_field :password_confirmation, id: 'password_confirmation', class: 'form-control', placeholder: 'Password Confirmation' %>
-        </div>
-      </div>
         <div class="form-group row mt-3">
           <div class="col-sm-3"></div>
           <div class="col-sm-3">
             <%= f.submit '新規登録', class: 'btn btn-success btn-block' %>
+          </div>
         </div>
+      <% end %>
+
+      <h4 class="text-left ml-5 mb-3">
+        <span class='bg-light p-2'>既に登録済みの方</span>
+      </h4>
+      <div class="d-flex ml-4">
+        <div class="mx-1"></div>
+        <span><%= link_to 'こちら', new_customer_session_path %>からログインしてください</span>
       </div>
-    <% end %>
-
-  <h4 class="text-left ml-5 mb-3">
-    <span class='bg-light p-2'>既に登録済みの方</span>
-  </h4>
-<div class="d-flex ml-4">
-  <div class="mx-1"></div>
-  <span><%= link_to 'こちら',new_customer_session_path %>からログインしてください</span>
-</div>
-
-</div>
+    </div>
+  </div>
