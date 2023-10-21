@@ -1,0 +1,9 @@
+<form class="form-inline">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-light" type="submit">Search</button>
+    <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
+      <%= f.text_field :word %>
+      <%= f.select :range, options_for_select([['Customer'], ['Item']]) %>
+      <%= f.submit "Search", class: "btn btn-outline-light" %>
+    <% end %>
+</form>

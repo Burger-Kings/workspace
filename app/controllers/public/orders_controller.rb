@@ -32,7 +32,10 @@ def create
 end
 
 def confirm
+  @cart_items = current_customer.cart_items.all
   @order = Order.new(order_params)
+  @order.customer_id = current_customer.id
+
   if params[:order][:address_option] == "0"
     @order.postal_code = current_customer.postal_code
     @order.address = current_customer.address
@@ -47,8 +50,11 @@ def confirm
     @order.address = params[:order][:address]
     @order.name = params[:order][:name]
   end
-    @order.customer_id = current_customer.id
-    @cart_items = current_customer.cart_items.all
+
+  @order.shipping_fee = 800
+  total_price = @cart_items.sum { |cart_item| (cart_item.item.price * cart_item.amount * 1.1).to_i }
+  @order.total_price = total_price
+  
 end
 
 

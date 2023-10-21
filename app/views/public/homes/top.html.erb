@@ -2,36 +2,36 @@
   <div class='row py-5'>
     <%= render 'public/items/genre_search', genres: @genres %>
 
-    <div class='col-12 pt-5'>
-      <p class='home-text mx-auto text-center'>
+    <div class="col-12 col-md-10">
+      <p class='home-text mx-auto text-center mt-5'>
         ようこそ、ながのCAKEへ！<br>
         このサイトは、ケーキ販売のECサイトになります。<br>
         会員でない方も商品の閲覧はできますが、<br>
         購入には会員登録が必要になります.
       </p>
 
-      <div class=''>
-        <h3 class='ml-4 mb-4' style='word-break: break-word;'><strong>新着商品</strong></h3>
-        <div class="row">
-          <% @items.each do |item| %>
-            <div class="col-md-4 col-sm-6 mb-4">
-              <div class="card">
-                <%= link_to item_path(item) do %>
-                  <%= image_tag item.get_item_image(300,300) ,class: "card-img-top" %>
-                <% end %>
-                <div class="card-body">
-                  <h5 class="card-title"><%= item.name %></h5>
-                  <p class="card-text"><%= item.price %></p>
-                </div>
-              </div>
-            </div>
+      <h3 class='ml-4 mb-4' style='word-break: break-word;'><strong>新着商品</strong></h3>
+ <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-md-3 col-sm-6 mb-1">
+        <div class="card">
+          <%= link_to item_path(item), class: "text-dark", style: "text-decoration: none;" do %>
+          <%= image_tag item.get_item_image(500,500), class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title text-truncate"><%= item.name %></h5>
+            <% tax_include = (item.price * 1.1).floor %>
+            <p class="card-text">¥<%= tax_include %></p>
+          </div>
           <% end %>
         </div>
       </div>
+    <% end %>
+  </div>
+
     </div>
   </div>
 </div>
 
-<div class='container py-3'>
+<div class='container py-3 mb-5'>
   <div class='text-right'><%= link_to '全ての商品を見る >>', items_path %></div>
 </div>
