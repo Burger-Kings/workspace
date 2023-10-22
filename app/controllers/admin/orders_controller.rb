@@ -14,10 +14,7 @@ class Admin::OrdersController < ApplicationController
     redirect_to admin_order_path(@order)
   end
 
-  def index
-    @orders = Order.find(customer.id)
 
-  end
   private
 
   def order_params
