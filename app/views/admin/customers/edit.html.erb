@@ -10,7 +10,7 @@
             <th>会員ID</th>
             <td><%= @customer.id %></td>
           </tr>
-            <%= form_with model: @customer, url: admin_customer_path(@customer.id), local: true do |f| %>
+            <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch, local: true do |f| %>
             <tr>
               <th>氏名</th>
               <td><%= f.text_field :last_name, class:"form-control" %></td>
