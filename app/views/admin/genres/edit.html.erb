@@ -6,7 +6,7 @@
     <div class="col-md-8 px-5 px-sm-0">
       <table class="table table-borderless">
         <tbody>
-          <%= form_with model: @genre, url: admin_genre_path(@genre.id) do |f| %>
+          <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
             <tr>
               <th>ジャンル名</th>
               <td><%= f.text_field :name, class:"form-control" %></td>
