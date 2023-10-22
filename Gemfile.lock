@@ -87,6 +87,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.12.0)
     ffi (1.16.3)
     globalid (1.2.1)
@@ -148,6 +150,8 @@ GEM
     pry-byebug (3.10.1)
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (5.0.3)
     puma (5.6.7)
       nio4r (~> 2.0)
@@ -181,6 +185,9 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails-i18n (6.0.0)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 7)
     railties (6.1.7.6)
       actionpack (= 6.1.7.6)
       activesupport (= 6.1.7.6)
@@ -263,14 +270,17 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  enum_help
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   kaminari (~> 1.2.1)
   listen (~> 3.3)
   pry-byebug
+  pry-rails
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7, >= 6.1.7.6)
+  rails-i18n (~> 6)
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
