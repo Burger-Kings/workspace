@@ -13,20 +13,23 @@
           <h3 class="mb-3"><%= @item.name %></h3>
             <h5 class="mb-5"><%= @item.introduction %></h5>
               <div class="d-flex align-items-center mb-4">
+                <% if @item.is_sale == true %>
                 <% tax_include = (@item.price * 1.1).floor %>
                 <h5 class="mb-0">¥<%= tax_include %></h5>
                 <small class="ml-2">(税込)</small>
               </div>
-            <% if customer_signed_in? %>
-              <%= form_with model: @cart_item, local: true do |f| %>
-              <%= f.hidden_field :item_id, value: @item.id %>
-              <%= f.select :amount, options_for_select((1..10), selected: nil), include_blank: '個数選択' %>
-              <%= f.submit 'カートに入れる', class: 'btn btn-success ml-5' %>
-              <% end %>
-            <% end %>
+                  <% if customer_signed_in? %>
+                  <%= form_with model: @cart_item, local: true do |f| %>
+                  <%= f.hidden_field :item_id, value: @item.id %>
+                  <%= f.select :amount, options_for_select((1..10), selected: nil), include_blank: '個数選択' %>
+                  <%= f.submit 'カートに入れる', class: 'btn btn-success ml-5' %>
+                  <% end %>
+                  <% end %>
+                <% else %>
+                  <p class='text-danger'>販売停止中</p>
+                <% end %>
+              </div>
+           </div>
         </div>
-
       </div>
     </div>
-  </div>
-</div>
