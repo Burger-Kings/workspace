@@ -39,8 +39,7 @@ devise_for :admin,skip: [:passwords, :registrations], controllers: {
     get "customers/confirm_withdraw" => "customers#confirm_withdraw"
     patch "customers/withdraw" => "customers#withdraw"
   end
-  
-    
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
