@@ -7,21 +7,21 @@
       <div class="col-md-12 mb-3">
        <h2 class="ml-md-5"><%= @genre.name %>一覧 <small> （全<%= @amount %> 件）</small></h2>
       </div>
-     </dv>
-
-    <div class="container">
-     <div class="row">
-      <% @items.each do |item| %>
-     　 <div class="col-md-3 col-sm-6 mb-4">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_item_image(300,300) ,class: "img-fluid" %>
-            <% end %>
-            <h5 class="mt-3"><%= item.name %></h5>
-            <p><%= item.price %>円</p>
-     　 </div>
-      <% end %>
      </div>
+
+        <div class="container">
+         <div class="row">
+          <% @items.each do |item| %>
+         　 <div class="col-md-3 col-sm-6 mb-4">
+                <%= link_to item_path(item.id) do %>
+                  <%= image_tag item.get_item_image(300,300) ,class: "img-fluid" %>
+                <% end %>
+                <h5 class="mt-3"><%= item.name %></h5>
+                <p><%= item.price %>円</p>
+         　 </div>
+          <% end %>
+         </div>
+        </div>
     </div>
   </div>
- </div>
 </div>
