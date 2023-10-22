@@ -1,14 +1,27 @@
 <div class='container'>
-  <div class='row pt-5'>
+  <div class='row pt-5 ml-5'>
     <%= render 'public/items/genre_search' %>
+<div class="col-12 col-md-10">
+<div class="slider-container justify-content-center text-center ml-5 mb-3">
+  <div class="slider">
+    <div class="images">
+      <%= image_tag 'no_image.png', alt: "Image Alt Text" %>
+      <%= image_tag 'no_image.png', alt: "Image Alt Text" %>
+      <%= image_tag 'no_image.png', alt: "Image Alt Text" %>
+    </div>
+  </div>
+  <div class="text-overlay">
+    <p class="slider-text">ようこそ、ながのCAKEへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります.
+    </p>
+  </div>
+</div>
 
-    <div class="col-12 col-md-10">
-      <p class='home-text mx-auto text-center mt-5'>
-        ようこそ、ながのCAKEへ！<br>
-        このサイトは、ケーキ販売のECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります.
-      </p>
+
+<%= javascript_pack_tag 'application' %>
+
 
       <h3 class='ml-4 mb-4' style='word-break: break-word;'><strong>新着商品</strong></h3>
  <div class="row">

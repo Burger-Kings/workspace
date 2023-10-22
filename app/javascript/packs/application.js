@@ -15,3 +15,11 @@ import "../stylesheets/application";
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+/* global $ */
+$(function() {
+  $('.images').slick({
+      autoplaySpeed: 5000,
+      autoplay: true,
+  });
+});
