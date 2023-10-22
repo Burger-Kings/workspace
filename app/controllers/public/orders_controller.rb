@@ -50,11 +50,9 @@ def confirm
     @order.address = params[:order][:address]
     @order.name = params[:order][:name]
   end
-
   @order.shipping_fee = 800
   total_price = @cart_items.sum { |cart_item| (cart_item.item.price * cart_item.amount * 1.1).to_i }
   @order.total_price = total_price
-  
 end
 
 

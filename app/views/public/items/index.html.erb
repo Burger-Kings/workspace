@@ -18,8 +18,12 @@
             <%= image_tag item.get_item_image(300, 300), class: "card-img-top" %>
           <div class="card-body">
             <h5 class="card-title text-truncate"><%= item.name %></h5>
-            <% tax_include = (item.price * 1.1).floor %>
-            <p class="card-text">¥<%= tax_include %> <small class="text-muted custom_fony">(税込)</small></p>
+              <% if item.is_sale == true %>
+                <% tax_include = (item.price * 1.1).floor %>
+                <p class="card-text">¥<%= tax_include %> <small class="text-muted custom_font">(税込)</small></p>
+              <% else %>
+                <p class='card-text text-danger'>販売停止中</p>
+              <% end %>
             <% end %>
           </div>
         </div>
