@@ -11,4 +11,8 @@ class Customer < ApplicationRecord
   def self.search_for(content)
     Customer.where("last_name LIKE ? or first_name LIKE ?", "%#{content}%", "%#{content}%")
   end
+  
+  def active_for_authentication?
+    super && (self.is_active == false)
+  end
 end
