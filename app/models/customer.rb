@@ -13,6 +13,6 @@ class Customer < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && (self.is_active == false)
+    super && (self.is_active == true)
   end
 end

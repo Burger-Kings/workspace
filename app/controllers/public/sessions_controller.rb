@@ -23,7 +23,7 @@ class Public::SessionsController < Devise::SessionsController
   def customer_state
    @customer = Customer.find_by(email: params[:customer][:email])
    if @customer
-      if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == true))
+      if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
        redirect_to new_customer_registration_path
       end
