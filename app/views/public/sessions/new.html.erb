@@ -17,13 +17,13 @@
   <div class='form-group row justify-content-center'>
     <label for='email' class='col-form-label text-left col-sm-2'>メールアドレス</label>
     <div class='col-sm-4'>
-      <%= f.text_field :email, id: 'email', class: 'form-control', autofocus: true, autocomplete: "email", placeholder: 'Email' %>
+      <%= f.text_field :email, id: 'email', class: 'form-control', autofocus: true, autocomplete: "email", placeholder: 'Email', required: true %>
     </div>
   </div>
   <div class='form-group row justify-content-center'>
     <label for='password' class= 'col-form-label text-left col-sm-2'>パスワード</label>
     <div class='col-sm-4'>
-      <%= f.password_field :password, id: 'password', class: 'form-control', autocomplete: "current-password", placeholder: 'Password' %>
+      <%= f.password_field :password, id: 'password', class: 'form-control', autocomplete: "current-password", placeholder: 'Password', required: true %>
     </div>
   </div>
 
