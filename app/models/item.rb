@@ -4,6 +4,12 @@ class Item < ApplicationRecord
 
   has_one_attached :item_image
 
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :price, presence: true, numericality: true
+  validates :is_sale, inclusion: { in: [true, false] }
+  validates :item_image, presence: true
+
   def self.search_for(content)
     Item.where("name LIKE?","%#{content}%")
   end

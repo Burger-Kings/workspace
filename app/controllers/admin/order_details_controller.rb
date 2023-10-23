@@ -1,4 +1,6 @@
 class Admin::OrderDetailsController < ApplicationController
+  before_action :authenticate_admin!
+
   def update
     @order_detail = OrderDetail.find(params[:id])
     @order = @order_detail.order
@@ -12,9 +14,11 @@ class Admin::OrderDetailsController < ApplicationController
             is_updated = false
           end
         end
-        @order.update(status: "preparing") if is_updated
+        @order.update(status: "preparing") if is_updated == true
+        redirect_to admin_order_path(@order)
+      else
+        render template: "admin/orders/show"
       end
-      redirect_to admin_order_path(@order)
   end
 
   def order_detail_params
