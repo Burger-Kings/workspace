@@ -1,5 +1,6 @@
 <div class="container mt-4">
  <h4> <span class="w-25 mt-5" style="background-color: #eee">配送先登録/一覧</span></h4>
+ <p class="text-danger text-center"><%= render "public/shared/error_messages", resource: @address %></p>
  
  <%= form_with model: @address, method: :post, local: true do |f| %>
  <div class="row">
@@ -29,23 +30,27 @@
  
  <div class="row">
      <div class="col-md-7">
-         <table class="table table-bordered">
-             <tr>
-                 <td class="table-secondary border-dark">郵便番号</td>
-                 <td class="table-secondary border-dark">住所</td>
-                 <td class="table-secondary border-dark">宛名</td>
-                 <td class="table-secondary border-dark"></td>
-             </tr>
-             
-             <% @addresses.each do |address| %>
-             <tr>
-                 <td class="border-dark"><%= address.postal_code %></td>
-                 <td class="border-dark"><%= address.address %></td>
-                 <td class="border-dark"><%= address.name %></td>
-                 <td class="border-dark mx-auto"><%= link_to "編集する", edit_address_path(address), class:"btn btn-success" %> <%= link_to "削除する", address_path(address), method: :delete, class:"btn btn-danger" %></td>
-             </tr>
-             <% end %>
-         </table>
+         <% if @addresses.any? %>
+             <table class="table table-bordered">
+                 <tr>
+                     <td class="table-secondary border-dark">郵便番号</td>
+                     <td class="table-secondary border-dark">住所</td>
+                     <td class="table-secondary border-dark">宛名</td>
+                     <td class="table-secondary border-dark"></td>
+                 </tr>
+                 
+                 <% @addresses.each do |address| %>
+                 <tr>
+                     <td class="border-dark"><%= address.postal_code %></td>
+                     <td class="border-dark"><%= address.address %></td>
+                     <td class="border-dark"><%= address.name %></td>
+                     <td class="border-dark mx-auto"><%= link_to "編集する", edit_address_path(address), class:"btn btn-success" %> <%= link_to "削除する", address_path(address), method: :delete, class:"btn btn-danger" %></td>
+                 </tr>
+                 <% end %>
+             </table>
+         <% else %>
+             <h4 class="text-light ml-2 "><span class="bg-secondary">配送先は登録されていません</span></h4>
+         <% end %>
      </div>
  </div>
     
