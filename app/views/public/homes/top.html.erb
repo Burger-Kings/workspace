@@ -5,13 +5,14 @@
 <div class="slider-container justify-content-center text-center ml-5 mb-3">
   <div class="slider">
     <div class="images">
-      <%= image_tag 'no_image.png', alt: "Image Alt Text" %>
-      <%= image_tag 'no_image.png', alt: "Image Alt Text" %>
-      <%= image_tag 'no_image.png', alt: "Image Alt Text" %>
+      <%= image_tag 'sweets1.jpg', alt: "Image Alt Text" %>
+      <%= image_tag 'sweets2.jpg', alt: "Image Alt Text" %>
+      <%= image_tag 'sweets3.jpg', alt: "Image Alt Text" %>
+      <%= image_tag 'sweets4.jpg', alt: "Image Alt Text" %>
     </div>
   </div>
-  <div class="text-overlay">
-    <p class="slider-text">ようこそ、ながのCAKEへ！<br>
+  <div class="text-overlay" style='width: 500px; height: 250px;'>
+    <p class="slider-text" style='width: 400px; height: 200px;'>ようこそ、ながのCAKEへ！<br>
       このサイトは、ケーキ販売のECサイトになります。<br>
       会員でない方も商品の閲覧はできますが、<br>
       購入には会員登録が必要になります.
@@ -28,8 +29,10 @@
     <% @last_records.each do |item| %>
       <div class="col-md-3 col-sm-6 mb-1">
         <div class="card">
+          <div class='card-image'>
           <%= link_to item_path(item), class: "text-dark", style: "text-decoration: none;" do %>
           <%= image_tag item.get_item_image(300,300), class: "card-img-top" %>
+          </div>
           <div class="card-body">
             <h5 class="card-title text-truncate"><%= item.name %></h5>
               <% if item.is_sale == true %>

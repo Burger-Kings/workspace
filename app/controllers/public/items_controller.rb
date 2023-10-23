@@ -2,7 +2,8 @@ class Public::ItemsController < ApplicationController
 
   def index
     @items = Item.page(params[:page]).per(8)
-    @items_count = @items.size
+    @item_all = Item.all
+    @items_count = @item_all.count
     @genres = Genre.all
   end
 
@@ -11,7 +12,7 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
     @genres = Genre.all
   end
-  
+
   def search
     @genre_id = params[:genre_id]
     @items = Item.where(genre_id: @genre_id)
@@ -19,7 +20,7 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
     @genre = Genre.find(params[:genre_id])
   end
-  
+
   def search_name
     @content = params[:content]
     @records = Item.search_for(@content)

@@ -19,7 +19,7 @@ ActiveStorage.start()
 /* global $ */
 $(function() {
   $('.images').slick({
-      autoplaySpeed: 5000,
+      autoplaySpeed: 4000,
       autoplay: true,
   });
 });
