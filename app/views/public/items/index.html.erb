@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row pt-5">
-    
     <%= render 'public/items/genre_search' %>
-    
+
     <div class="col-12 col-md-10 mt-4 mx-auto">
       <div class="row align-items-center">
         <div class="col-md-12 mb-3">
@@ -10,14 +9,14 @@
         </div>
       </div>
 
-      <div class="container cardlist">
+      <div class="container">
         <div class="row">
           <% @items.each do |item| %>
             <div class="col-md-3 col-sm-6 mb-4">
-              <div class="card">
-                <div class='card-image'>
-                <%= link_to item_path(item), class: 'text-dark', style: "text-decoration: none;" do %>
-                  <%= image_tag item.get_item_image(300, 300), class: "card-img-top" %>
+              <%= link_to item_path(item), class: 'text-dark', style: "text-decoration: none;" do %>
+                <div class="card">
+                  <div class='card-image'>
+                    <%= image_tag item.get_item_image(300, 300), class: "card-img-top" %>
                   </div>
                   <div class="card-body">
                     <h5 class="card-title text-truncate"><%= item.name %></h5>
@@ -28,8 +27,8 @@
                       <p class='card-text text-danger'>販売停止中</p>
                     <% end %>
                   </div>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>

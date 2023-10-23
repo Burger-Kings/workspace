@@ -10,9 +10,12 @@ class Item < ApplicationRecord
   validates :is_sale, inclusion: { in: [true, false] }
   validates :item_image, presence: true
 
-
   def self.search_for(content)
     Item.where("name LIKE?","%#{content}%")
+  end
+
+  def with_tax_price
+    (price*1.1).floor
   end
 
   def get_item_image(width, height)

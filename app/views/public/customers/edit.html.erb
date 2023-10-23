@@ -1,13 +1,13 @@
 <div class="container">
     <h4 class="mt-4"> <span class="w-25" style="background-color: #eee">会員情報編集</span></h4>
-    
+    <%= render "public/shared/error_messages", resource: @customer %>
     <%= form_with model:@customer, url:customers_mypage_path, method: :patch, local:true do |f| %>
   <div class="row mt-5">
    <div class="col">
     <table class="table table-borderless">
        <tr>
         <td> <%= f.label :氏名 %> </td>
-        <td colspan="3"> <%= f.text_field :last_name %>  <%= f.text_field :first_name %> </td>
+        <td> <%= f.text_field :last_name %>  <%= f.text_field :first_name %> </td>
        </tr>
        
        <tr>

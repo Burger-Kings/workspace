@@ -51,7 +51,7 @@
             <%= render 'layouts/admin_search' %>
 
           <% elsif customer_signed_in? %>
-          　<li class="text-white">ようこそ、<%= current_customer.last_name %>さん！</li>
+          　<li class="text-primary mr-5 mt-2 ">ようこそ、<%= current_customer.last_name %>さん！</li>
 
             <li class="nav-item">
               <%= link_to 'マイページ', customers_mypage_path, class: 'btn btn-dark' %>
@@ -65,6 +65,7 @@
             <li class="nav-item">
               <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-dark mr-3" %>
             </li>
+            <%= render "layouts/item_search" %>
           <% else %>
             <li class="nav-item">
               <%= link_to 'About', about_path, class: "btn btn-dark" %>
@@ -78,19 +79,8 @@
             <li class="nav-item">
               <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-dark" %>
             </li>
+            <%= render "layouts/item_search" %>
           <% end %>
-          　　<div class="form-inline">
-                <%= form_with url: search_name_items_path, method: :get, local: true do |f| %>
-                 <div class="input-group">
-                  <%= text_field_tag :content, params[:content], placeholder: "search", class: "form-control" %>
-                  <span class="input-group-btn">
-                      <%= button_tag "submit", class: "btn bg-white" do %>
-                      <i class="fa-solid fa-magnifying-glass" style="color: #00ffee;"></i>
-                      <% end %>
-                  </span>
-                 </div>
-                <% end %>
-              </div>
           </div>
         </div>
       </nav>
