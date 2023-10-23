@@ -14,6 +14,7 @@
       </div>
 
   <%= form_with(model: resource, url: session_path(resource_name)) do |f| %>
+  <% render "public/shared/error_messages", resource: resource %>
   <div class='form-group row justify-content-center'>
     <label for='email' class='col-form-label text-left col-sm-2'>メールアドレス</label>
     <div class='col-sm-4'>

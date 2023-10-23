@@ -33,24 +33,28 @@ def create
 end
 
 def confirm
-  @cart_items = current_customer.cart_items.all
   @order = Order.new(order_params)
-  @order.customer_id = current_customer.id
 
-  if params[:order][:address_option] == "0"
+  case params[:order][:address_option]
+  when "0"
     @order.postal_code = current_customer.postal_code
     @order.address = current_customer.address
-    @order.name = current_customer.last_name + current_customer.first_name
-  elsif params[:order][:address_option] == "1"
+    @order.name = "#{current_customer.last_name} #{current_customer.first_name}"
+  when "1"
     addresses = Address.find(params[:order][:customer_id])
     @order.postal_code = addresses.postal_code
     @order.address = addresses.address
     @order.name = addresses.name
-  elsif params[:order][:address_option] == "2"
+  when "2"
+    @order.customer_id = current_customer.id
     @order.postal_code = params[:order][:postal_code]
     @order.address = params[:order][:address]
     @order.name = params[:order][:name]
+  else
+    redirect_back(fallback_location: root_path)
   end
+
+  @cart_items = current_customer.cart_items.all
   @order.shipping_fee = 800
   total_price = @cart_items.sum { |cart_item| (cart_item.item.price * cart_item.amount * 1.1).to_i }
   @order.total_price = total_price

@@ -23,17 +23,17 @@
             <%= image_tag cart_item.item.get_item_image(100,100) %>
             <%= cart_item.item.name %>
           </td>
-          <td style="vertical-align: middle;"><%= (cart_item.item.price * 1.1).to_i %>円</td>
+          <td style="vertical-align: middle;"><%= cart_item.item.with_tax_price %>円</td>
           <td style="vertical-align: middle;">
             <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true, method: :patch do |f| %>
               <%= f.number_field :amount, min: 1, max: 10  %>
               <%= f.submit '変更', class: 'btn btn-primary' %>
             <% end %>
           </td>
-          <% subtotal = ((cart_item.item.price * cart_item.amount) * 1.1).to_i %>
-          <td style="vertical-align: middle;"><%= subtotal %>円</td>
+
+          <td style="vertical-align: middle;"><%= cart_item.subtotal %>円</td>
           <td style="vertical-align: middle;">
-            <%= link_to '削除する', cart_item_path(cart_item), class: 'btn btn-danger text-nowrap', method: :delete, data: { confirm: "削除しますか？" } %>
+            <%= link_to '削除する', cart_item_path(cart_item), class: 'btn btn-danger text-nowrap', method: :delete %>
           </td>
         </tr>
         <% end %>
@@ -52,7 +52,7 @@
             <td class="text-left">合計金額</td>
             <% total_price = 0 %>
             <% @cart_items.each do |cart_item| %>
-              <% total_price += ((cart_item.item.price * cart_item.amount) * 1.1).to_i %>
+              <% total_price += cart_item.subtotal %>
             <% end %>
             <td style="vertical-align: middle;"><%= total_price %>円</td>
           </tr>
