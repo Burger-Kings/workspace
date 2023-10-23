@@ -1,0 +1,12 @@
+<div class="form-inline">
+  <%= form_with url: search_name_items_path, method: :get, local: true do |f| %>
+   <div class="input-group">
+     <%= text_field_tag :content, params[:content], placeholder: "search", class: "form-control" %>
+      <span class="input-group-btn">
+     <%= button_tag "submit", class: "btn bg-white" do %>
+     <i class="fa-solid fa-magnifying-glass" style="color: #00ffee;"></i>
+     <% end %>
+     </span>
+   </div>
+ <% end %>
+</div>
