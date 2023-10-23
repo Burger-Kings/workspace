@@ -13,13 +13,16 @@ def create
  @address = Address.new(address_params)
  @address.customer_id = current_customer.id
  @address.save
- redirect_to addresses_path
+   redirect_to addresses_path
 end
 
 def update
  @address = Address.find(params[:id])
- @address.update(address_params)
- redirect_to addresses_path
+  if @address.update(address_params)
+   redirect_to addresses_path
+  else
+   render "edit"
+  end
 end
 
 def destroy
