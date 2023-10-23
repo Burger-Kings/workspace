@@ -3,9 +3,13 @@ class Item < ApplicationRecord
   has_many :order_details, dependent: :destroy
 
   has_one_attached :item_image
-  
+
   def self.search_for(content)
     Item.where("name LIKE?","%#{content}%")
+  end
+
+  def with_tax_price
+    (price*1.1).floor
   end
 
   def get_item_image(width, height)

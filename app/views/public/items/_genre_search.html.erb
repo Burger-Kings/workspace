@@ -7,7 +7,11 @@
     <%= form_with url: search_items_path, method: :get do |f| %>
       <% @genres.each do |genre| %>
         <tr>
-          <td><%= link_to genre.name, search_items_path(genre_id: genre.id), method: :get %></td>
+          <td>
+            <%= link_to search_items_path(genre_id: genre.id), method: :get, class: 'btn btn-light' do %>
+              <%= genre.name %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     <% end %>

@@ -13,15 +13,29 @@ body {
   border: none;
 }
 
+.btn-light {
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  &:hover {
+    background-color: initial; 
+    border-bottom: 1px solid #000;
+  }
+}
+
 // 小さいテキスト
 .small {
   color: #21252f;
 }
 
 // テーブルスタイル
-.custom_table th {
+.custom_table td {
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
+}
+.custom_table th {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
 }
 
 // ナビゲーションバー
@@ -54,7 +68,7 @@ footer {
   margin: 0 auto;
 }
 
-// 画像コンテナ
+// Top画像コンテナ
 .images {
   width: 100%;
   height: auto;
@@ -66,7 +80,7 @@ footer {
   justify-content: center;
   align-items: center;
 }
-
+// Top画像
 .images img {
   object-fit: cover;
   width: 100%;
@@ -139,6 +153,7 @@ footer {
   text-decoration: none;
   background-color: #012B28;
   border: 1.5px solid #EBB42C;
+  cursor: default;
 }
 
 .pagination .page-item.active a {
@@ -152,10 +167,16 @@ footer {
 }
 
 .card {
-  flex: 0 0 calc(33.33% - 20px); /* カードの幅を均等に調整 */
-  margin: 10px; /* カード間のマージンを調整 */
-  height: auto; /* カードの高さを自動調整 */
-  box-sizing: border-box; /* ボックスモデルを調整 */
+  flex: 0 0 calc(33.33% - 20px); 
+  margin: 10px; 
+  height: auto; 
+  box-sizing: border-box; 
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .cardlist {
@@ -177,4 +198,8 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.item_image {
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
 }

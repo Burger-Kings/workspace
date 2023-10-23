@@ -2,11 +2,11 @@
   <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
     <h5><strong>支払い方法</strong></h5>
     <div class="form-check ml-5">
-      <%= f.radio_button :payment_method, 'クレジットカード', checked: true, class: 'form-check-input' %>
+      <%= f.radio_button :payment_method, 'credit_card', checked: true, class: 'form-check-input' %>
       <%= f.label :payment_method, 'クレジットカード', class: 'form-check-label' %>
     </div>
     <div class="form-check ml-5 mt-2">
-      <%= f.radio_button :payment_method, '銀行振込', class: 'form-check-input' %>
+      <%= f.radio_button :payment_method, 'transfer', class: 'form-check-input' %>
       <%= f.label :payment_method, '銀行振込', class: 'form-check-label' %>
     </div>
 
