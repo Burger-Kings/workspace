@@ -19,7 +19,6 @@
               <% else %>
               <h5 class='text-danger'>販売停止中</h5>
             <% end %>
-
             <% if customer_signed_in? %>
               <%= form_with model: @cart_item, local: true do |f| %>
                 <%= f.hidden_field :item_id, value: @item.id %>
