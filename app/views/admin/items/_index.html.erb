@@ -19,13 +19,22 @@
       </td>
       <td><%= item.price %></td>
       <td><%= item.genre.name %></td>
-      <% if item.is_sale == true %>
-        <td><strong style="color: green;">販売中</strong></td>
-      <% else %>
-        <td><strong style="color: gray;">販売停止中</strong></td>
-      <% end %>
+      <td>
+        <% if item.is_sale %>
+          <strong style="color: green;">販売中</strong>
+        <% else %>
+          <strong style="color: gray;">販売停止中</strong>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>
 </table>
-<%= paginate items %>
+
+<div class='container'>
+  <div class="d-flex justify-content-center">
+    <div class="mx-auto">
+      <%= paginate items %>
+    </div>
+  </div>
+</div>

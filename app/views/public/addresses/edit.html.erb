@@ -1,7 +1,7 @@
 <div class="container mt-4">
     
       <h4><span class="w-25 mt-5 ml-5 font-weight-bold" style="background-color: #eee">配送先編集</span></h4>
-      <p class="text-danger text-center"><%= render "public/shared/error_messages", resource: @address %></p>
+      <%= render "public/shared/error_messages", resource: @address %>
     
 
 <%= form_with model: @address, url:address_path(@address), method: :patch, local: true do |f| %>

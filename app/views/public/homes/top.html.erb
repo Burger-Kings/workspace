@@ -32,7 +32,7 @@
           <div class='card-image'>
           <%= link_to item_path(item), class: "text-dark", style: "text-decoration: none;" do %>
           <%= image_tag item.get_item_image(300,300), class: "card-img-top" %>
-          </div>
+          
           <div class="card-body">
             <h5 class="card-title text-truncate"><%= item.name %></h5>
               <% if item.is_sale == true %>
