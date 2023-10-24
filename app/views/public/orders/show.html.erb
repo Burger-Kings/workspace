@@ -15,11 +15,11 @@
             </tr>
             <tr>
                 <td class="table-secondary border-dark">支払い方法</td>
-                <td class="border-dark"><%= @order.payment_method %></td>
+                <td class="border-dark"><%= @order.payment_method_i18n %></td>
             </tr>
             <tr>
                 <td class="table-secondary border-dark">ステータス</td>
-                <td class="border-dark"><%= @order.status %></td>
+                <td class="border-dark"><%= @order.status_i18n %></td>
             </tr>
         </table>
      </div>
@@ -34,19 +34,19 @@
                       <% total += (order_item.price * order_item.amount) %>
                     <% end %>
                  <td class="border-dark">
-                   <%= total %>
+                   ¥<%= total %>
                  </td>
              </tr>
              
              <tr>
                  <td class="table-secondary border-dark">配送料</td>
                  <td class="border-dark">
-                    <%= @order.shipping_fee %></td>
+                    ¥<%= @order.shipping_fee %></td>
              </tr>
              
              <tr>
                  <td class="table-secondary border-dark font-weight-bold">ご請求額</td>
-                 <td class="border-dark"><%= (total + 800) %></td>
+                 <td class="border-dark">¥<%= (total + 800) %></td>
              </tr>
          </table>
      </div>
@@ -58,19 +58,19 @@
          　　<table class="table table-bordered">
              　<tr>
                  <td class="table-secondary border-dark font-weight-bold w-50">商品</td>
-                 <td class="table-secondary border-dark font-weight-bold">単価(税込)</td>
-                 <td class="table-secondary border-dark font-weight-bold">個数</td>
-                 <td class="table-secondary border-dark font-weight-bold">小計</td>
+                 <td class="table-secondary border-dark font-weight-bold text-center">単価(税込)</td>
+                 <td class="table-secondary border-dark font-weight-bold text-center">個数</td>
+                 <td class="table-secondary border-dark font-weight-bold text-center">小計</td>
             　 </tr>
             　 
             　 <% @order_items.each do |order_item| %>
             　 <tr>
             　   <td class="border-dark"><%= order_item.item.name %></td>
-            　    <td class="border-dark"><%= order_item.price %></td>
-            　    <td class="border-dark"><%= order_item.amount %></td>
+            　    <td class="border-dark text-center">¥<%= order_item.price %></td>
+            　    <td class="border-dark text-center"><%= order_item.amount %></td>
             　    <td class="border-dark">
             　        <% subtotal = (order_item.price * order_item.amount).to_i %>
-                     <%= subtotal %></td>
+                     ¥<%= subtotal %></td>
             　 </tr>
             　 <% end %>
          　　</table>
