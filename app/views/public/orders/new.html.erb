@@ -1,4 +1,9 @@
 <div class="container mt-5">
+  <div class="text-center">
+    <div class="flash-message" style="font-size: 24px; color: red;">
+      <%= flash[:error] %>
+    </div>
+  </div>
   <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
     <h5><strong>支払い方法</strong></h5>
     <div class="form-check ml-5">

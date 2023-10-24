@@ -57,14 +57,14 @@
     </div>
   </div>
 
-  <h5 class="mb-5 mt-2"><strong class="mr-3">支払方法</strong><%= @order.payment_method %></h5>
+  <h5 class="mb-5 mt-2"><strong class="mr-3">支払方法</strong><%= @order.payment_method_i18n %></h5>
   <h5>
     <strong class="mr-3">お届け先</strong><%= @order.postal_code %><%= @order.address %><br>
     <%= @order.name  %>
   </h5>
 
   <div class="col-sm-3 mx-auto mt-5">
-    <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+    <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
       <%= f.hidden_field :customer_id %>
       <%= f.hidden_field :shipping_fee %>
       <%= f.hidden_field :payment_method %>
