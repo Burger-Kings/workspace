@@ -1,27 +1,36 @@
 <div class="container px-5 px-sm-0">
   <div class="row my-4">
-    <h2>商品詳細</h2>
+    <div class="col-12">
+      <h2>商品詳細</h2>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-4 p-5">
-      <%= image_tag @item.get_item_image(300, 300) %>
+      <%= image_tag @item.get_item_image(300, 300), class: 'item_image' %>
     </div>
     <div class="col-md-8 p-5">
+
       <table class="table table-borderless">
         <tbody>
-            <th>商品名</th>
+          <tr>
+            <th style="width: 30%;">商品名</th>
             <td><%= @item.name %></td>
           </tr>
           <tr>
             <th>商品説明</th>
             <td><%= @item.introduction %></td>
           </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-borderless">
+        <tbody>
           <tr>
-            <th>ジャンル</th>
+            <th style="width: 30%;">ジャンル</th>
             <td><%= @item.genre.name %></td>
           </tr>
           <tr>
-            <th>税込価格<br>(税抜価格)</th>
+            <th>税込価格(税抜価格)</th>
             <td><%= (@item.price * @tax).to_i %>(<%= (@item.price).to_i %>)円</td>
           </tr>
           <tr>
@@ -34,7 +43,7 @@
           </tr>
         </tbody>
       </table>
-      <%= link_to '編集する', edit_admin_item_path(@item), class:"btn btn-success" %>
+      <%= link_to '編集する', edit_admin_item_path(@item), class:"btn btn-success ml-3" %>
     </div>
   </div>
 </div>

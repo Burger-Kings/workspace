@@ -1,30 +1,39 @@
 <div class="container mt-5">
-<h4 class="mt"><span class="w-25" style="background-color: #eee">注文履歴一覧</span></h4>
+    <h4 class="mt"><span class="w-25" style="background-color: #eee">注文履歴一覧</span></h4>
 
- <div class="row mt-4">
-    <table class="table table-bordered">
-        <tr>
-            <td class="table-secondary">注文日</td>
-            <td class="table-secondary">配送先</td>
-            <td class="table-secondary">注文商品</td>
-            <td class="table-secondary">支払金額</td>
-            <td class="table-secondary">ステータス</td>
-            <td class="table-secondary">注文詳細</td>
-        </tr>
-        
-        <tr>
-            <% @orders.each do |order| %>
-            <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= order.address %></td>
-            <td><% order.order_details.each do |order_detail| %>
-                <%= order_detail.item.name %>
+    <div class="row mt-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="table-secondary">注文日</th>
+                    <th class="table-secondary">配送先</th>
+                    <th class="table-secondary">注文商品</th>
+                    <th class="table-secondary">支払金額</th>
+                    <th class="table-secondary">ステータス</th>
+                    <th class="table-secondary">注文詳細</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @orders.each do |order| %>
+                    <tr>
+                        <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+                        <td><%= order.address %></td>
+                        <td>
+                            <% order.order_details.each do |order_detail| %>
+                                <%= order_detail.item.name %>
+                            <% end %>
+                        </td>
+                        <td><%= order.total_price %></td>
+                        <td><%= order.status %></td>
+                        <td><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
+                    </tr>
                 <% end %>
-            </td>
-            <td><%= order.total_price %></td>
-            <td><%= order.status %></td>
-            <td><%= link_to "表示する",order_path(order),class:"btn btn-primary" %></td>
-        </tr>
-            <% end %>
-    </table>
- </div>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="mx-auto">
+            <%= paginate @orders %>
+        </div>
+    </div>
 </div>
