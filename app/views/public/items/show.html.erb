@@ -16,6 +16,8 @@
             <% if @item.is_sale == true %>
               <h5 class="mb-0">¥<%= @item.with_tax_price %></h5>
               <small class="ml-2">(税込)</small>
+            <% else %>
+              <p class='text-danger'>販売停止中</p>
             <% end %>
 
             <% if customer_signed_in? %>
@@ -24,8 +26,6 @@
                 <%= f.select :amount, options_for_select((1..10), selected: nil), include_blank: '個数選択' %>
                 <%= f.submit 'カートに入れる', class: 'btn btn-success ml-5' %>
               <% end %>
-            <% else %>
-              <p class='text-danger'>販売停止中</p>
             <% end %>
           </div>
         </div>
