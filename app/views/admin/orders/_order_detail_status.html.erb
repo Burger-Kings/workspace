@@ -1,0 +1,4 @@
+<%= form_with model: order_detail,url: admin_order_detail_path(order_detail),method: :patch, remote: true, data: { "turbolinks" => false } do |f| %>
+<%= f.select :making_status, OrderDetail.making_statuses.keys.map{|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]}, class: "making_status" %><%= "　　" %>
+<%= f.submit "更新", class: "btn btn-success"%>
+<% end %>
