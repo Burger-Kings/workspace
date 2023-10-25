@@ -5,18 +5,18 @@
   <div class="row px-sm-0 px-5">
     <div class="col-md-6 px-5 px-sm-0">
       <%= render "admin/shared/error_messages", resource: @genre %>
+      <%= form_with model: @genre, url: admin_genres_path do |f| %>
       <table class="table table-borderless">
         <tbody>
-          <%= form_with model: @genre, url: admin_genres_path do |f| %>
             <tr>
               <th>ジャンル名</th>
               <td><%= f.text_field :name, class:"form-control" %></td>
               <td><%= f.submit '新規作成', class:"btn btn-success" %></td>
               <td></td>
             </tr>
-          <% end %>
         </tbody>
       </table>
+      <% end %>
     </div>
   </div>
 

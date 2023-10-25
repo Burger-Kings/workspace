@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
 
   validates :name, presence: true
-  validates :postal_code, presence: true
+  validates :postal_code, presence: true, length: { is: 7 }
   validates :address, presence: true, length: { maximum: 50 }
   validates :status, presence: true
   validates :shipping_fee, presence: true, numericality: true

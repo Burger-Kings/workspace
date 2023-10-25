@@ -16,6 +16,13 @@ class Admin::OrdersController < ApplicationController
       render :show
     end
   end
+  
+  def index
+    @orders = Order.all
+    @customer = @orders.find_by(customer_id: customer.id)
+    @customer_orders = @orders.where(customer_id: )
+   
+  end
 
   private
 

@@ -31,7 +31,7 @@
           </tr>
           <tr>
             <th>税込価格(税抜価格)</th>
-            <td><%= (@item.price * @tax).to_i %>(<%= (@item.price).to_i %>)円</td>
+            <td><%= @item.with_tax_price %><%= "　" %>(<%= @item.price.floor %>)円</td>
           </tr>
           <tr>
             <th>販売ステータス</th>
