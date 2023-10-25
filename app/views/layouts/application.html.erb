@@ -1,90 +1,86 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Naganocake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script src="https://kit.fontawesome.com/76f838f2af.js" crossorigin="anonymous"></script>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-  </head>
-
-  <body>
-
-    <header>
-      <nav class="navbar navbar-expand-lg py-2">
-        <div class="container">
-          <a class="navbar-brand" href="/">
-            <%= image_tag "logo.jpg",width: '120px', class: "img-fluid" %>
-          </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+<head>
+  <title>Naganocake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/76f838f2af.js" crossorigin="anonymous"></script>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <%= image_tag "logo.jpg", width: '120px', class: "img-fluid" %>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
-
-          <% if admin_signed_in? %>
-            <li class='nav-item'>
-              <%= link_to '商品一覧', admin_items_path, class: 'btn btn-dark' %>
-            </li>
-            <li class='nav-item'>
-              <%= link_to '会員一覧', admin_customers_path, class: 'btn btn-dark' %>
-            </li>
-            <li class='nav-item'>
-              <%= link_to '注文履歴一覧', admin_path, class: 'btn btn-dark' %>
-            </li>
-            <li class='nav-item'>
-              <%= link_to 'ジャンル一覧', admin_genres_path, class: 'btn btn-dark' %>
-            </li>
-            <li class='nav-item'>
-              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-dark' %>
-            </li>
-            <%= render 'layouts/admin_search' %>
-
-          <% elsif customer_signed_in? %>
-          　<li class="text-primary mr-5 mt-2 ">ようこそ、<%= current_customer.last_name %>さん！</li>
-
-            <li class="nav-item">
-              <%= link_to 'マイページ', customers_mypage_path, class: 'btn btn-dark' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '商品一覧', items_path, class: "btn btn-dark" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'カート', cart_items_path, class: "btn btn-dark" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-dark mr-3" %>
-            </li>
-            <%= render "layouts/item_search" %>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to 'About', about_path, class: "btn btn-dark" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '商品一覧', items_path, class: "btn btn-dark" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '新規登録', new_customer_registration_path, class: "btn btn-dark" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-dark" %>
-            </li>
-            <%= render "layouts/item_search" %>
-          <% end %>
-          </div>
+            <% if admin_signed_in? %>
+              <li class='nav-item'>
+                <%= link_to '商品一覧', admin_items_path, class: 'btn btn-dark' %>
+              </li>
+              <li class='nav-item'>
+                <%= link_to '会員一覧', admin_customers_path, class: 'btn btn-dark' %>
+              </li>
+              <li class='nav-item'>
+                <%= link_to '注文履歴一覧', admin_path, class: 'btn btn-dark' %>
+              </li>
+              <li class='nav-item'>
+                <%= link_to 'ジャンル一覧', admin_genres_path, class: 'btn btn-dark' %>
+              </li>
+              <li class='nav-item'>
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-dark' %>
+              </li>
+              <%= render 'layouts/admin_search' %>
+            <% elsif customer_signed_in? %>
+              <li class="text-primary mr-5 mt-2">ようこそ、<%= current_customer.last_name %>さん！</li>
+              <li class="nav-item">
+                <%= link_to 'マイページ', customers_mypage_path, class: 'btn btn-dark' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '商品一覧', items_path, class: "btn btn-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'カート', cart_items_path, class: "btn btn-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-dark mr-3" %>
+              </li>
+              <%= render "layouts/item_search" %>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'About', about_path, class: "btn btn-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '商品一覧', items_path, class: "btn btn-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '新規登録', new_customer_registration_path, class: "btn btn-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-dark" %>
+              </li>
+              <%= render "layouts/item_search" %>
+            <% end %>
+          </ul>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
+  </header>
 
     <%= yield %>
 <div class='container py-3 mb-5 mt-5'></div>
