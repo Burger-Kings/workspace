@@ -4,13 +4,14 @@
   </div>
   <div class="row">
     <div class="col-md-8 px-5 px-sm-0">
+      <%= render "admin/shared/error_messages", resource: @customer %>
+      <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch, local: true do |f| %>
       <table class="table table-borderless">
         <tbody>
           <tr>
             <th>会員ID</th>
             <td><%= @customer.id %></td>
           </tr>
-            <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch, local: true do |f| %>
             <tr>
               <th>氏名</th>
               <td><%= f.text_field :last_name, class:"form-control" %></td>
@@ -56,9 +57,9 @@
                 <%= f.submit '変更を保存', class: "btn btn-success" %>
               </td>
             </tr>
-            <% end %>
         </tbody>
       </table>
+      <% end %>
     </div>
   </div>
 </div>

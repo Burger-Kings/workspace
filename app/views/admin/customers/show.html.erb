@@ -4,6 +4,7 @@
   </div>
   <div class="row">
     <div class="col-md-10 px-5 px-sm-0">
+      <%= render "admin/shared/error_messages", resource: @customer %>
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -39,7 +40,7 @@
             <% if @customer.is_active == true %>
               <td><strong style="color: green;">有効</strong></td>
             <% else %>
-              <td><strong style="color: gray;">退会</strong></td>
+              <td><strong style="color: gray;">退会済</strong></td>
             <% end %>
           </tr>
           <tr>
