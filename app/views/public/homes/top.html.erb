@@ -20,39 +20,35 @@
   </div>
 </div>
 
-
-<%= javascript_pack_tag 'application' %>
-
-
       <h3 class='ml-4 mb-4' style='word-break: break-word;'><strong>新着商品</strong></h3>
- <div class="row">
-    <% @last_records.each do |item| %>
-      <div class="col-md-3 col-sm-6 mb-1">
-        <div class="card">
-          <div class='card-image'>
-          <%= link_to item_path(item), class: "text-dark", style: "text-decoration: none;" do %>
-          <%= image_tag item.get_item_image(300,300), class: "card-img-top" %>
-          
-          <div class="card-body">
-            <h5 class="card-title text-truncate"><%= item.name %></h5>
-              <% if item.is_sale == true %>
-                <% tax_include = (item.price * 1.1).floor %>
-                <p class="card-text">¥<%= tax_include %><small class='text-muted custom_font'>(税込)</small></p>
-              <% else %>
-                <p class='card-text text-danger'>販売停止中</p>
+      <div class="container">
+        <div class="row">
+          <% @last_records.each do |item| %>
+            <div class="col-md-3 col-sm-6 mb-4">
+              <%= link_to item_path(item), class: 'text-dark', style: "text-decoration: none;" do %>
+                <div class="card">
+                  <div class='card-image'>
+                    <%= image_tag item.get_item_image(300, 300), class: "card-img-top" %>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title text-truncate"><%= item.name %></h5>
+                    <% if item.is_sale == true %>
+                      <% tax_include = (item.price * 1.1).floor %>
+                      <p class="card-text">¥<%= tax_include %> <small class="text-muted custom_font">(税込)</small></p>
+                    <% else %>
+                      <p class='card-text text-danger'>販売停止中</p>
+                    <% end %>
+                  </div>
+                </div>
               <% end %>
             </div>
           <% end %>
         </div>
       </div>
-    <% end %>
-  </div>
-
     </div>
   </div>
 </div>
 
 <div class='container py-3 mb-5'>
   <div class='text-right'><%= link_to '全ての商品を見る >>', items_path %></div>
-</div>
 </div>

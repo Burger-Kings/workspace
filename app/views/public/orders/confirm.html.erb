@@ -7,24 +7,24 @@
       <table class="table table-bordered mt-4">
         <thead>
           <tr>
-            <th style="width: 40%;">商品名</th>
-            <th style="width: 20%;">単価</th>
-            <th style="width: 20%;">数量</th>
-            <th style="width: 20%;">小計</th>
+            <th style="width: 60%;">商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
           </tr>
         </thead>
         <tbody>
           <% @cart_items ||= [] %>
           <% @cart_items.each do |cart_item| %>
             <tr>
-              <td>
-                <%= image_tag cart_item.item.get_item_image(100, 100) %>
+              <td style="vertical-align: middle;">
+                <%= image_tag cart_item.item.get_item_image(100, 100), class: 'cart_item_image' %>
                 <%= cart_item.item.name %>
               </td>
-              <td><%= cart_item.item.with_tax_price %></td>
-              <td><%= cart_item.amount %></td>
-              <td>
-                <%= cart_item.subtotal %>
+              <td style="vertical-align: middle;"><%= cart_item.item.with_tax_price %>円</td>
+              <td style="vertical-align: middle;"><%= cart_item.amount %></td>
+              <td style="vertical-align: middle;">
+                <%= cart_item.subtotal %>円
               </td>
             </tr>
           <% end %>
@@ -37,7 +37,7 @@
           <tr>
             <th>送料</th>
             <% @order.shipping_fee = 800 %>
-            <td style="width: 60%;"><%= @order.shipping_fee %></td>
+            <td><%= @order.shipping_fee %>円</td>
           </tr>
           <tr>
             <th>商品合計</th>
@@ -45,23 +45,30 @@
             <% @cart_items.each do |cart_item| %>
               <% total += cart_item.subtotal %>
             <% end %>
-            <td><%= total %></td>
+            <td><%= total %>円</td>
           </tr>
           <tr>
             <th>請求金額</th>
             <% @order.total_price = @order.shipping_fee + total %>
-            <td><%= @order.total_price %></td>
+            <td><%= @order.total_price %>円</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <h5 class="mb-5 mt-2"><strong class="mr-3">支払方法</strong><%= @order.payment_method_i18n %></h5>
-  <h5>
-    <strong class="mr-3">お届け先</strong><%= @order.postal_code %><%= @order.address %><br>
-    <%= @order.name  %>
-  </h5>
+<h5 class="mb-5 mt-2">
+  <strong class="mr-3">支払方法</strong><%= @order.payment_method_i18n %>
+</h5>
+
+<h5 class="mb-2">
+  <strong class="mr-3">お届け先</strong>
+  <span class="mb-2"><%= @order.postal_code %></span>
+  <span class="mb-2 ml-3"><%= @order.address %></span><br>
+</h5>
+<h5 class='mt-2 ml-5 pl-1'>
+  <span class="mb-2 ml-5"><%= @order.name  %></span>
+</h5>
 
   <div class="col-sm-3 mx-auto mt-5">
     <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
