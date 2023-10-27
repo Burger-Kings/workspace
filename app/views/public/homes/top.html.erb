@@ -1,0 +1,54 @@
+<div class='container'>
+  <div class='row pt-5 ml-5'>
+    <%= render 'public/items/genre_search' %>
+<div class="col-12 col-md-10">
+<div class="slider-container justify-content-center text-center ml-5 mb-3">
+  <div class="slider">
+    <div class="images">
+      <%= image_tag 'sweets1.jpg', alt: "Image Alt Text" %>
+      <%= image_tag 'sweets2.jpg', alt: "Image Alt Text" %>
+      <%= image_tag 'sweets3.jpg', alt: "Image Alt Text" %>
+      <%= image_tag 'sweets4.jpg', alt: "Image Alt Text" %>
+    </div>
+  </div>
+  <div class="text-overlay" style='width: 500px; height: 250px;'>
+    <p class="slider-text" style='width: 400px; height: 200px;'>ようこそ、ながのCAKEへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。
+    </p>
+  </div>
+</div>
+
+      <h3 class='ml-4 mb-4' style='word-break: break-word;'><strong>新着商品</strong></h3>
+      <div class="container">
+        <div class="row">
+          <% @last_records.each do |item| %>
+            <div class="col-md-3 col-sm-6 mb-4">
+              <%= link_to item_path(item), class: 'text-dark', style: "text-decoration: none;" do %>
+                <div class="card" style="width: 11rem;">
+                  <div class='card-image'>
+                    <%= image_tag item.get_item_image(300, 300), class: "card-img-top" %>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title text-truncate"><%= item.name %></h5>
+                    <% if item.is_sale == true %>
+                      <% tax_include = (item.price * 1.1).floor %>
+                      <p class="card-text">¥<%= tax_include %> <small class="text-muted custom_font">(税込)</small></p>
+                    <% else %>
+                      <p class='card-text text-danger'>販売停止中</p>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class='container py-3 mb-5'>
+  <div class='text-right'><%= link_to '全ての商品を見る >>', items_path, id: 'top-link' %></div>
+</div>

@@ -1,0 +1,22 @@
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>購入日時</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% customer_orders.each do |order| %>
+    <tr>
+      <td>
+        <%= link_to admin_order_path(order) do %>
+         <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S')  %>
+        <% end %>
+      </td>
+      <td><%= order.order_details.sum(:amount) %></td>
+      <td><%= order.status_i18n %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

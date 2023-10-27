@@ -1,0 +1,65 @@
+<div class="container mt-5">
+  <h4><span class="w-25 mt-5" style="background-color: #eee;">配送先登録/一覧</span></h4>
+  <%= render "public/shared/error_messages", resource: @address %>
+  <%= form_with model: @address, method: :post, local: true do |f| %>
+  <div class='form-group row'>
+    <label for='postal_code' class="col-sm-3 col-form-label">郵便番号（ハイフンなし）</label>
+    <div class='col-sm-2'>
+      <%= f.text_field :postal_code, id: "postal-code", class: "form-control", placeholder: "0000000" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for='address' class="col-sm-3 col-form-label">住所</label>
+    <div class="col-sm-4">
+      <%= f.text_field :address, id: "address", class: "form-control", placeholder: "東京都渋谷区神園町0-0" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for='name' class="col-sm-3 col-form-label">宛名</label>
+    <div class="col-sm-2">
+      <%= f.text_field :name, id: "name", class: "form-control", placeholder: "令和道子" %>
+    </div>
+    <div class="lll col-sm-2 mb-3">
+      <%= f.submit '新規登録', class: 'btn btn-success btn-block' %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <% if @addresses.any? %>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="border-dark" style="white-space: nowrap; background-color: #d6d8db;">郵便番号</th>
+              <th class="border-dark" style="white-space: nowrap; background-color: #d6d8db;">住所</th>
+              <th class="border-dark" style="white-space: nowrap; background-color: #d6d8db;">宛名</th>
+              <th class="border-dark" style="white-space: nowrap; background-color: #d6d8db;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @addresses.each do |address| %>
+              <tr>
+                <td class="border-dark"><%= address.postal_code %></td>
+                <td class="border-dark"><%= address.address %></td>
+                <td class="border-dark"><%= address.name %></td>
+                <td class="border-dark">
+                  <div class="btn-group">
+                    <%= link_to "編集する", edit_address_path(address), class: "btn btn-success btn-sm mr-2 rounded" %>
+                    <%= link_to "削除する", address_path(address), method: :delete, class: "btn btn-danger btn-sm rounded" %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% else %>
+        <div class="text-light bg-secondary p-2">配送先は登録されていません</div>
+      <% end %>
+    </div>
+  </div>
+</div>
