@@ -8,22 +8,22 @@
 
         <div class="form-group row">
           <label for='name' class='col-sm-1 col-form-label'>名前</label>
-          <label for="name" class="col-sm-2 col-form-label text-right">（性）</label>
+          <label for="name" class="col-sm-2 col-form-label text-right custom-label">（性）</label>
           <div class="col-sm-3">
             <%= f.text_field :last_name, id: 'name', class: 'form-control', placeholder: '令和', required: true %>
           </div>
-          <label for="new_field" class="col-sm-2 col-form-label text-right">（名）</label>
+          <label for="new_field" class="col-sm-2 col-form-label text-right custom-label">（名）</label>
           <div class="col-sm-3">
             <%= f.text_field :first_name, id: 'name', class: 'form-control', placeholder: '道子', required: true %>
           </div>
         </div>
         <div class="form-group row">
           <label for="kana" class="col-sm-1 col-form-label">フリガナ</label>
-          <label for="kana" class="col-sm-2 col-form-label text-right">（セイ）</label>
+          <label for="kana" class="col-sm-2 col-form-label text-right custom-label">（セイ）</label>
           <div class="col-sm-3">
             <%= f.text_field :last_name_kana, id: 'kana', class: 'form-control', placeholder: 'レイワ', required: true %>
           </div>
-          <label for="new_field" class="col-sm-2 col-form-label text-right">（メイ）</label>
+          <label for="new_field" class="col-sm-2 col-form-label text-right ">（メイ）</label>
           <div class="col-sm-3">
             <%= f.text_field :first_name_kana, id: 'kana', class: 'form-control', placeholder: 'ミチコ', required: true %>
           </div>

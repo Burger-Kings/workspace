@@ -26,7 +26,7 @@
           <% @last_records.each do |item| %>
             <div class="col-md-3 col-sm-6 mb-4">
               <%= link_to item_path(item), class: 'text-dark', style: "text-decoration: none;" do %>
-                <div class="card">
+                <div class="card" style="width: 11rem;">
                   <div class='card-image'>
                     <%= image_tag item.get_item_image(300, 300), class: "card-img-top" %>
                   </div>
@@ -50,5 +50,5 @@
 </div>
 
 <div class='container py-3 mb-5'>
-  <div class='text-right'><%= link_to '全ての商品を見る >>', items_path %></div>
+  <div class='text-right'><%= link_to '全ての商品を見る >>', items_path, id: 'top-link' %></div>
 </div>

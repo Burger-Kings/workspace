@@ -4,6 +4,7 @@
   </h4>
   <div class="row">
     <div class="col-md-8">
+      <div class="table-responsive">
       <table class="table table-bordered mt-4">
         <thead>
           <tr>
@@ -18,7 +19,7 @@
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td style="vertical-align: middle;">
-                <%= image_tag cart_item.item.get_item_image(100, 100), class: 'cart_item_image' %>
+                <%= image_tag cart_item.item.get_item_image(100, 100), class: 'cart_item' %>
                 <%= cart_item.item.name %>
               </td>
               <td style="vertical-align: middle;"><%= cart_item.item.with_tax_price %>円</td>
@@ -30,6 +31,7 @@
           <% end %>
         </tbody>
       </table>
+    </div>
     </div>
     <div class="col-md-4">
       <table class="table table-bordered mt-4">

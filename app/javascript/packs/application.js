@@ -28,9 +28,7 @@ $(document).on('turbolinks:load', function() {
 $(document).ready(function() {
   setTimeout(function() {
     $('#ctn-preloader').addClass('loaded');
-    // Una vez haya terminado el preloader aparezca el scroll
     if ($('#ctn-preloader').hasClass('loaded')) {
-      // Es para que una vez que se haya ido el preloader se elimine toda la seccion preloader
       $('#preloader').delay(1000).queue(function() {
         $(this).remove();
       });
@@ -38,3 +36,15 @@ $(document).ready(function() {
   }, 4000);
 });
 
+
+$(function() {
+    var windowWidth = $(window).width();
+    $('#pagetop').hide();
+    $(window).on('scroll', () => {
+        if (windowWidth <= 768 && $(window).scrollTop() > 200) { 
+            $('#pagetop').fadeIn();
+        } else {
+            $('#pagetop').fadeOut();
+        }
+    });
+});

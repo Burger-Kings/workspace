@@ -2,9 +2,13 @@
   <h4 class="ml-4">
     <span class="bg-light p-2">ショッピングカート</span>
   </h4>
+  <% if @cart_items.any? %>
   <div class="text-right mb-3 mt-3">
-    <div><%= link_to 'カートを空にする', cart_items_destroy_all_path, class: "btn btn-danger", method: :delete %></div>
+       <div class="button-container">
+      <%= link_to 'カートを空にする', cart_items_destroy_all_path, class: "btn btn-danger cart-button", method: :delete %>
+    </div>
   </div>
+
   <div class="table-responsive">
     <table class="table table-bordered">
       <thead>
@@ -20,7 +24,7 @@
         <% @cart_items.each do |cart_item| %>
         <tr>
           <td style="vertical-align: middle;">
-            <%= image_tag cart_item.item.get_item_image(100,100), class: 'cart_item_image' %>
+            <%= image_tag cart_item.item.get_item_image(125,125), class: 'cart_item_image mr-3' %>
             <%= cart_item.item.name %>
           </td>
           <td style="vertical-align: middle;"><%= cart_item.item.with_tax_price %>円</td>
@@ -60,9 +64,15 @@
       </table>
     </div>
   </div>
-  <div class="text-center mt-4">
-    <% if @cart_items.any? %>
-    <div><%= link_to '情報入力に進む', new_order_path, class: 'btn btn-success' %></div>
-    <% end %>
+    <div class="text-center mt-4">
+      <% if @cart_items.any? %>
+      <div><%= link_to '情報入力に進む', new_order_path, class: 'btn btn-success' %></div>
+      <% end %>
+  <% else %>
+      <div class="text-center" style="height: 30vh; display: flex; flex-direction: column; justify-content: center;">
+      <p style="font-size: 26px;">カートは空です<%= image_tag("icons8-ショッピングカート.gif", width: "60", height: "60") %></p>
+      <div><%= link_to '買い物を続ける', root_path, class: 'btn btn-primary' %></div>
+    </div>
   </div>
+  <% end %>
 </div>

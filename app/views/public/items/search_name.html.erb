@@ -20,9 +20,9 @@
           <% end %>
 
           <% @records.each do |item| %>
-            <div class="col-md-3 col-sm-6 mb-4">
+            <div class="col-md-3 col-sm-6 mb-4 d-flex">
               <%= link_to item_path(item), class: 'text-dark', style: "text-decoration: none;" do %>
-                <div class="card">
+                <div class="card ml-5" style="width: 11rem;">
                   <div class='card-image'>
                     <%= image_tag item.get_item_image(300, 300), class: "card-img-top" %>
                   </div>
